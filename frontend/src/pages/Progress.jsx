@@ -101,18 +101,18 @@ export default function Progress() {
 
             {/* PR Banner */}
             {showPRBanner && (
-                <div className="bg-green-500 text-white px-6 py-4 rounded-lg text-center animate-pulse">
+                <div className="bg-primary text-sidebar-dark px-6 py-4 rounded-lg text-center font-semibold">
                     <p className="text-2xl font-bold">🎉 {prMessage} 🎉</p>
                 </div>
             )}
 
             {/* Exercise Selector */}
-            <div className="card">
+            <div className="bg-card-dark border border-border-dark rounded-xl p-6">
                 <label className="block text-sm font-medium text-gray-300 mb-2">
                     Select Exercise
                 </label>
                 <select
-                    className="input-field"
+                    className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                     value={selectedExercise || ''}
                     onChange={(e) => setSelectedExercise(e.target.value)}
                 >
@@ -160,7 +160,7 @@ export default function Progress() {
                                         <div key={index} className="flex-1 flex flex-col items-center">
                                             <div className="w-full flex items-end justify-center h-full">
                                                 <div
-                                                    className="bg-purple-600 w-full rounded-t-lg transition-all hover:bg-purple-500"
+                                                    className="bg-primary w-full rounded-t-lg transition-all hover:bg-primary/90"
                                                     style={{ height: `${height}%` }}
                                                     title={`${point.volume} volume`}
                                                 />
@@ -193,7 +193,7 @@ export default function Progress() {
                                     <input
                                         type="number"
                                         step="0.1"
-                                        className="input-field"
+                                        className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                                         value={formData.weight}
                                         onChange={(e) =>
                                             setFormData({ ...formData, weight: e.target.value })
@@ -207,7 +207,7 @@ export default function Progress() {
                                     </label>
                                     <input
                                         type="number"
-                                        className="input-field"
+                                        className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                                         value={formData.reps}
                                         onChange={(e) =>
                                             setFormData({ ...formData, reps: e.target.value })
@@ -221,7 +221,7 @@ export default function Progress() {
                                     </label>
                                     <input
                                         type="number"
-                                        className="input-field"
+                                        className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                                         value={formData.sets}
                                         onChange={(e) =>
                                             setFormData({ ...formData, sets: e.target.value })
@@ -231,7 +231,7 @@ export default function Progress() {
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn-primary w-full">
+                            <button type="submit" className="bg-primary text-sidebar-dark px-4 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors w-full">
                                 Log Set
                             </button>
                         </form>
@@ -240,7 +240,7 @@ export default function Progress() {
             )}
 
             {selectedExercise && !bestRecords && (
-                <div className="card text-center">
+                <div className="bg-card-dark border border-border-dark rounded-xl p-6 text-center">
                     <p className="text-gray-400">No data yet. Log your first set above!</p>
                 </div>
             )}

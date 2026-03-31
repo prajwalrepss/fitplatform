@@ -22,10 +22,11 @@ export default function Register() {
 
         try {
             const response = await authAPI.register(formData);
-            login(response.data.token, response.data.user);
+            const { token, userId, username } = response.data.data;
+            login(token, { userId, username });
             navigate('/dashboard');
         } catch (err) {
-            setError(err.response?.data?.error || 'Registration failed');
+            setError(err.response?.data?.message || 'Registration failed');
         } finally {
             setLoading(false);
         }

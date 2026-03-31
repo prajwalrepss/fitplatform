@@ -23,10 +23,13 @@ export default function Calories() {
                 caloriesAPI.last7Days(),
             ]);
             setTodayTotal(todayRes.data);
-            setLast7Days(last7Res.data);
+            // Ensure last7Days is always an array
+            setLast7Days(Array.isArray(last7Res.data) ? last7Res.data : []);
             setLoading(false);
         } catch (err) {
             console.error('Failed to load data:', err);
+            // Ensure last7Days is an array even on error
+            setLast7Days([]);
             setLoading(false);
         }
     };
@@ -50,7 +53,10 @@ export default function Calories() {
         );
     }
 
-    const maxCalories = Math.max(...last7Days.map((d) => d.totalCalories), 2000);
+    // Safe calculation - ensure last7Days is an array
+    const maxCalories = Array.isArray(last7Days) && last7Days.length > 0
+        ? Math.max(...last7Days.map((d) => d.totalCalories), 2000)
+        : 2000;
 
     return (
         <div className="p-6 space-y-6">
@@ -58,7 +64,7 @@ export default function Calories() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Input Form */}
-                <div className="card">
+                <div className="bg-card-dark border border-border-dark rounded-xl p-6">
                     <h2 className="text-xl font-bold text-white mb-4">Add Entry</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
@@ -67,7 +73,7 @@ export default function Calories() {
                             </label>
                             <input
                                 type="number"
-                                className="input-field"
+                                className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                                 value={formData.calories}
                                 onChange={(e) =>
                                     setFormData({ ...formData, calories: e.target.value })
@@ -83,7 +89,7 @@ export default function Calories() {
                                 </label>
                                 <input
                                     type="number"
-                                    className="input-field"
+                                    className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                                     value={formData.protein}
                                     onChange={(e) =>
                                         setFormData({ ...formData, protein: e.target.value })
@@ -96,7 +102,7 @@ export default function Calories() {
                                 </label>
                                 <input
                                     type="number"
-                                    className="input-field"
+                                    className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                                     value={formData.carbs}
                                     onChange={(e) =>
                                         setFormData({ ...formData, carbs: e.target.value })
@@ -109,7 +115,7 @@ export default function Calories() {
                                 </label>
                                 <input
                                     type="number"
-                                    className="input-field"
+                                    className="w-full bg-card-dark border border-border-dark text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition"
                                     value={formData.fats}
                                     onChange={(e) =>
                                         setFormData({ ...formData, fats: e.target.value })
@@ -118,24 +124,24 @@ export default function Calories() {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn-primary w-full">
+                        <button type="submit" className="bg-primary text-sidebar-dark px-4 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors w-full">
                             Add Entry
                         </button>
                     </form>
                 </div>
 
                 {/* Today's Totals */}
-                <div className="card">
+                <div className="bg-card-dark border border-border-dark rounded-xl p-6">
                     <h2 className="text-xl font-bold text-white mb-4">Today's Totals</h2>
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-gray-700 rounded-lg p-4">
+                        <div className="bg-background-dark rounded-lg p-4">
                             <p className="text-gray-400 text-sm">Calories</p>
                             <p className="text-3xl font-bold text-white">
                                 {todayTotal?.totalCalories || 0}
                             </p>
                         </div>
                         <div className="bg-gray-700 rounded-lg p-4">
-                            <p className="text-gray-400 text-sm">Protein</p>
+                            <p className="text-text-secondary text-sm">Protein</p>
                             <p className="text-3xl font-bold text-white">
                                 {todayTotal?.totalProtein || 0}g
                             </p>
@@ -157,7 +163,7 @@ export default function Calories() {
             </div>
 
             {/* 7 Day Chart */}
-            <div className="card">
+            <div className="bg-card-dark border border-border-dark rounded-xl p-6">
                 <h2 className="text-xl font-bold text-white mb-4">Last 7 Days</h2>
                 <div className="flex items-end justify-between h-64 gap-2">
                     {last7Days.map((day, index) => {
@@ -166,7 +172,7 @@ export default function Calories() {
                             <div key={index} className="flex-1 flex flex-col items-center">
                                 <div className="w-full flex items-end justify-center h-full">
                                     <div
-                                        className="bg-blue-600 w-full rounded-t-lg transition-all hover:bg-blue-500"
+                                        className="bg-primary w-full rounded-t-lg transition-all hover:bg-primary/90"
                                         style={{ height: `${height}%` }}
                                         title={`${day.totalCalories} cal`}
                                     />
