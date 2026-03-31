@@ -45,6 +45,11 @@ const userSchema = new mongoose.Schema({
         ],
         required: false,
     },
+    experienceLevel: {
+        type: String,
+        enum: ["beginner", "intermediate", "advanced"],
+        default: "beginner",
+    },
     createdAt: {
         type: Date,
         default: Date.now,

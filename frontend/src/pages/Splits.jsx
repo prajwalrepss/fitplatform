@@ -37,21 +37,21 @@ export default function Splits() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {splits.map((split) => (
-                    <div key={split.id} className="card">
+                    <div key={split.id} className="bg-card-dark border border-border-dark rounded-xl p-6">
                         <h2 className="text-2xl font-bold text-white mb-4">{split.name}</h2>
-                        <p className="text-gray-400 mb-4">{split.description}</p>
+                        <p className="text-text-secondary mb-4">{split.description}</p>
 
                         <div className="space-y-3">
-                            {split.days.map((day, index) => (
-                                <div key={index} className="bg-gray-700 rounded-lg p-4">
+                            {Array.isArray(split.days) && split.days.map((day, index) => (
+                                <div key={index} className="bg-background-dark rounded-lg p-4">
                                     <h3 className="text-lg font-semibold text-white mb-2">
                                         Day {day.day}: {day.focus}
                                     </h3>
                                     <div className="flex flex-wrap gap-2">
-                                        {day.muscles.map((muscle, idx) => (
+                                        {Array.isArray(day.muscles) && day.muscles.map((muscle, idx) => (
                                             <span
                                                 key={idx}
-                                                className="bg-blue-600 text-white text-sm px-3 py-1 rounded-full"
+                                                className="bg-primary text-sidebar-dark text-sm px-3 py-1 rounded-full font-semibold"
                                             >
                                                 {muscle}
                                             </span>

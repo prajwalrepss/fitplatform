@@ -1,4 +1,4 @@
-import { useMemo, Suspense } from 'react';
+import React, { useMemo, Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, useGLTF } from '@react-three/drei';
 
@@ -13,10 +13,19 @@ const getColorFromLoad = (load) => {
 };
 
 // -------------------------------
-// Safe Human Model Loader
+// Safe Human Model Loader with Error Handling
 // -------------------------------
 function HumanBody({ muscleStatus }) {
-    const gltf = useGLTF('/models/human.glb');
+    const [hasError, setHasError] = useState(false);
+
+    // Wrap useGLTF with error handling
+    let gltf;
+    try {
+        gltf = useGLTF('/models/human.glb', true);
+    } catch (error) {
+        console.warn('3D model not found:', error);
+        return <FallbackModel />;
+    }
 
     const muscleColors = useMemo(() => {
         const colors = {};
@@ -46,6 +55,10 @@ function HumanBody({ muscleStatus }) {
         });
     }, [gltf, muscleColors]);
 
+    if (hasError || !gltf?.scene) {
+        return <FallbackModel />;
+    }
+
     return <primitive object={gltf.scene} />;
 }
 
@@ -57,13 +70,41 @@ function FallbackModel() {
         <group>
             <mesh>
                 <boxGeometry args={[1, 2, 0.5]} />
-                <meshStandardMaterial color="#334155" />
+                <meshStandardMaterial color="#1a1a1a" />
             </mesh>
-            <Text position={[0, 1.5, 0]} fontSize={0.2} color="white">
-                3D Model Not Found
+            <Text position={[0, 1.5, 0]} fontSize={0.15} color="#d4af35">
+                3D Model Not Available
+            </Text>
+            <Text position={[0, 1.2, 0]} fontSize={0.1} color="#a0a0a0">
+                Add human.glb to /public/models/
             </Text>
         </group>
     );
+}
+
+// -------------------------------
+// Error Boundary Wrapper
+// -------------------------------
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error) {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error, errorInfo) {
+        console.warn('3D Model Error:', error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return <FallbackModel />;
+        }
+        return this.props.children;
+    }
 }
 
 // -------------------------------
@@ -71,13 +112,15 @@ function FallbackModel() {
 // -------------------------------
 export default function MuscleHeatmap3D({ muscleStatus }) {
     return (
-        <div className="w-full h-[500px] bg-slate-900 rounded-2xl border border-slate-800">
+        <div className="w-full h-[500px] bg-card-dark rounded-2xl border border-border-dark">
             <Canvas camera={{ position: [3, 1, 4], fov: 50 }}>
                 <ambientLight intensity={0.6} />
                 <directionalLight position={[5, 5, 5]} intensity={1} />
 
                 <Suspense fallback={<FallbackModel />}>
-                    <HumanBody muscleStatus={muscleStatus} />
+                    <ErrorBoundary>
+                        <HumanBody muscleStatus={muscleStatus} />
+                    </ErrorBoundary>
                 </Suspense>
 
                 <OrbitControls enableZoom enablePan={false} minDistance={3} maxDistance={8} />
@@ -85,3 +128,6 @@ export default function MuscleHeatmap3D({ muscleStatus }) {
         </div>
     );
 }
+
+// Preload the model (will fail silently if not found)
+useGLTF.preload('/models/human.glb');

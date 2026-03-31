@@ -3,95 +3,93 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { SECRET, EXPIRES_IN } = require("../config/jwt");
+const { verifyToken } = require("../middleware/auth");
 
-// POST /auth/register - Register new user
-router.post("/register", async (req, res) => {
+// POST /auth/register
+router.post("/register", async (req, res, next) => {
     try {
-        const { username, email, password, age, height, weight, goal } = req.body;
+        const { username, email, password, age, height, weight, goal, experienceLevel } = req.body;
 
-        // Validate required fields
         if (!username || !email || !password) {
-            return res.status(400).json({ error: "Username, email, and password are required" });
+            return res.status(400).json({ success: false, message: "Username, email, and password are required" });
         }
 
-        // Check if email already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ error: "Email already registered" });
+            return res.status(400).json({ success: false, message: "Email already registered" });
         }
 
-        // Check if username already exists
         const existingUsername = await User.findOne({ username });
         if (existingUsername) {
-            return res.status(400).json({ error: "Username already taken" });
+            return res.status(400).json({ success: false, message: "Username already taken" });
         }
 
-        // Create new user (password will be hashed by pre-save hook)
-        const user = new User({
-            username,
-            email,
-            password,
-            age,
-            height,
-            weight,
-            goal,
-        });
-
+        const user = new User({ username, email, password, age, height, weight, goal, experienceLevel });
         await user.save();
 
+        const token = jwt.sign(
+            { userId: user._id, username: user.username, email: user.email },
+            SECRET,
+            { expiresIn: EXPIRES_IN }
+        );
+
         res.status(201).json({
+            success: true,
+            data: { token, userId: user._id, username: user.username },
             message: "User registered successfully",
-            userId: user._id,
-            username: user.username,
         });
     } catch (error) {
-        console.error("Registration error:", error);
-        res.status(500).json({ error: "Failed to register user" });
+        next(error);
     }
 });
 
-// POST /auth/login - Login user
-router.post("/login", async (req, res) => {
+// POST /auth/login
+router.post("/login", async (req, res, next) => {
     try {
         const { email, password } = req.body;
 
-        // Validate required fields
         if (!email || !password) {
-            return res.status(400).json({ error: "Email and password are required" });
+            return res.status(400).json({ success: false, message: "Email and password are required" });
         }
 
-        // Find user by email
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(401).json({ error: "Invalid email or password" });
+            return res.status(401).json({ success: false, message: "Invalid email or password" });
         }
 
-        // Compare password using bcrypt
         const isPasswordValid = await user.comparePassword(password);
         if (!isPasswordValid) {
-            return res.status(401).json({ error: "Invalid email or password" });
+            return res.status(401).json({ success: false, message: "Invalid email or password" });
         }
 
-        // Generate JWT token
         const token = jwt.sign(
-            {
-                userId: user._id,
-                username: user.username,
-                email: user.email,
-            },
+            { userId: user._id, username: user.username, email: user.email },
             SECRET,
             { expiresIn: EXPIRES_IN }
         );
 
         res.json({
+            success: true,
+            data: { token, userId: user._id, username: user.username },
             message: "Login successful",
-            token,
-            userId: user._id,
-            username: user.username,
         });
     } catch (error) {
-        console.error("Login error:", error);
-        res.status(500).json({ error: "Failed to login" });
+        next(error);
+    }
+});
+
+// GET /auth/me
+router.get("/me", verifyToken, async (req, res, next) => {
+    try {
+        const user = await User.findById(req.userId).select("-password");
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        res.json({ success: true, data: user });
+    } catch (error) {
+        next(error);
     }
 });
 

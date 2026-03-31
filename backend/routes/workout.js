@@ -5,77 +5,82 @@ const splitEngine = require("../logic/splitEngine");
 const WorkoutSession = require("../models/WorkoutSession");
 const { verifyToken } = require("../middleware/auth");
 
-// Apply authentication middleware to all workout routes
+// All workout routes require auth
 router.use(verifyToken);
 
 // start split
-router.post("/start", (req, res) => {
+router.post("/start", (req, res, next) => {
   try {
     splitEngine.start();
-    res.json({ message: "Split started", startedAt: splitEngine.startedAt });
+    res.json({ success: true, data: { startedAt: splitEngine.startedAt }, message: "Split started" });
   } catch (error) {
-    res.status(500).json({ error: "Failed to start workout" });
+    next(error);
   }
 });
 
 // end split and save session
-router.post("/end", async (req, res) => {
+router.post("/end", async (req, res, next) => {
   try {
     const savedSession = await splitEngine.end();
 
     if (!savedSession) {
-      return res.status(400).json({ error: "No active workout to end" });
+      return res.status(400).json({ success: false, message: "No active workout to end" });
     }
 
-    res.json({
-      message: "Workout ended and saved",
-      session: savedSession,
-    });
+    res.json({ success: true, data: savedSession, message: "Workout ended and saved" });
   } catch (error) {
-    console.error("Error ending workout:", error);
-    res.status(500).json({ error: "Failed to end workout" });
+    next(error);
   }
 });
 
 // add exercise
-router.post("/exercise/:id", (req, res) => {
+router.post("/exercise/:id", (req, res, next) => {
   try {
     const status = splitEngine.addExercise(req.params.id);
 
     if (!status) {
-      return res.status(400).json({ error: "Invalid exercise or split not started" });
+      return res.status(400).json({ success: false, message: "Invalid exercise or split not started" });
     }
 
-    res.json(status);
+    res.json({ success: true, data: status });
   } catch (error) {
-    res.status(500).json({ error: "Failed to add exercise" });
+    next(error);
   }
 });
 
 // current muscle status
-router.get("/status", (req, res) => {
+router.get("/status", (req, res, next) => {
   try {
-    res.json(splitEngine.getStatus());
+    res.json({ success: true, data: splitEngine.getStatus() });
   } catch (error) {
-    res.status(500).json({ error: "Failed to get status" });
+    next(error);
   }
 });
 
 // get workout history
-router.get("/history", async (req, res) => {
+router.get("/history", async (req, res, next) => {
   try {
-    const sessions = await WorkoutSession.find()
+    const sessions = await WorkoutSession.find({ userId: req.userId })
       .sort({ startedAt: -1 })
       .limit(50);
 
-    res.json({
-      count: sessions.length,
-      sessions: sessions,
-    });
+    res.json({ success: true, data: { count: sessions.length, sessions } });
   } catch (error) {
-    console.error("Error fetching workout history:", error);
-    res.status(500).json({ error: "Failed to fetch workout history" });
+    next(error);
   }
 });
+
+// ========================================
+// LIVE WORKOUT SESSION ENDPOINTS
+// ========================================
+const liveWorkoutController = require("../controllers/liveWorkout");
+
+router.post("/live/start", liveWorkoutController.startLiveSession);
+router.post("/live/add-exercise", liveWorkoutController.addExerciseToLive);
+router.post("/live/add-set", liveWorkoutController.addSetToLive);
+router.post("/live/end", liveWorkoutController.endLiveSession);
+router.get("/live/status", liveWorkoutController.getLiveStatus);
+router.delete("/live/cancel", liveWorkoutController.cancelLiveSession);
+router.post("/log", liveWorkoutController.logWorkout);
 
 module.exports = router;

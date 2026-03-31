@@ -136,14 +136,14 @@ export default function Workout() {
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                 {/* LEFT: 3D Muscle View */}
                 <div className="lg:col-span-3 space-y-4">
-                    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                    <div className="bg-card-dark border border-border-dark rounded-2xl p-6">
                         <h2 className="text-lg font-semibold text-white mb-4">Muscle Activation</h2>
                         <div className="h-[500px] relative">
                             {exercises.length > 0 ? (
                                 <MuscleHeatmap3D muscleStatus={muscleStatus} />
                             ) : (
                                 <div className="flex items-center justify-center h-full">
-                                    <p className="text-slate-500 text-sm">3D model loading...</p>
+                                    <p className="text-text-secondary text-sm">3D model loading...</p>
                                 </div>
                             )}
                         </div>
@@ -153,18 +153,18 @@ export default function Workout() {
                 {/* RIGHT: Controls */}
                 <div className="lg:col-span-2 space-y-4">
                     {/* Start/End Button */}
-                    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                    <div className="bg-card-dark border border-border-dark rounded-2xl p-6">
                         {!isActive ? (
                             <button
                                 onClick={handleStartWorkout}
-                                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-xl px-4 py-3 transition text-sm font-medium"
+                                className="w-full bg-primary hover:bg-primary/90 text-sidebar-dark rounded-xl px-4 py-3 transition text-sm font-semibold"
                             >
                                 Start Workout
                             </button>
                         ) : (
                             <button
                                 onClick={handleEndWorkout}
-                                className="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl px-4 py-3 transition text-sm font-medium"
+                                className="w-full bg-card-dark hover:bg-border-dark text-text-secondary rounded-xl px-4 py-3 transition text-sm font-semibold"
                             >
                                 End Workout
                             </button>
@@ -173,7 +173,7 @@ export default function Workout() {
 
                     {/* Exercise Search & List */}
                     {isActive && (
-                        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                        <div className="bg-card-dark border border-border-dark rounded-2xl p-6">
                             <h3 className="text-sm font-semibold text-white mb-4">Add Exercise</h3>
 
                             <input
@@ -181,18 +181,18 @@ export default function Workout() {
                                 placeholder="Search exercises..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-slate-950 border border-slate-800 text-white px-4 py-2 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-500 transition text-sm mb-4"
+                                className="w-full bg-background-dark border border-border-dark text-white px-4 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition text-sm mb-4"
                             />
 
                             <div className="space-y-2 max-h-[600px] overflow-y-auto custom-scrollbar">
                                 {!Array.isArray(filteredExercises) || filteredExercises.length === 0 ? (
-                                    <p className="text-slate-500 text-center py-8 text-sm">No exercises found</p>
+                                    <p className="text-text-secondary text-center py-8 text-sm">No exercises found</p>
                                 ) : (
                                     filteredExercises.map((exercise) => (
                                         <div
                                             key={exercise.id}
                                             onClick={() => handleAddExercise(exercise.id)}
-                                            className="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:bg-slate-800 cursor-pointer transition"
+                                            className="bg-card-dark border border-border-dark rounded-xl p-4 hover:bg-border-dark cursor-pointer transition"
                                         >
                                             <div className="flex items-start justify-between gap-3">
                                                 <div className="flex-1 min-w-0">
@@ -200,7 +200,7 @@ export default function Workout() {
                                                         {exercise.name}
                                                     </h4>
                                                     <div className="flex gap-2 text-xs">
-                                                        <span className="text-slate-400 capitalize">
+                                                        <span className="text-text-secondary capitalize">
                                                             {exercise.primaryMuscle}
                                                         </span>
                                                         <span className={getDifficultyBadge(exercise.difficulty)}>
@@ -208,7 +208,7 @@ export default function Workout() {
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <button className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center transition text-xs">
+                                                <button className="flex-shrink-0 w-6 h-6 rounded-full bg-primary hover:bg-primary/90 text-sidebar-dark flex items-center justify-center transition text-xs font-semibold">
                                                     +
                                                 </button>
                                             </div>
@@ -220,8 +220,8 @@ export default function Workout() {
                     )}
 
                     {!isActive && (
-                        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center">
-                            <p className="text-slate-500 text-sm">Start a workout to track exercises</p>
+                        <div className="bg-card-dark border border-border-dark rounded-2xl p-8 text-center">
+                            <p className="text-text-secondary text-sm">Start a workout to track exercises</p>
                         </div>
                     )}
                 </div>

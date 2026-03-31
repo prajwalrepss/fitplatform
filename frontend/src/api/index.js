@@ -3,6 +3,7 @@ import client from './client';
 export const authAPI = {
     register: (data) => client.post('/auth/register', data),
     login: (data) => client.post('/auth/login', data),
+    me: () => client.get('/auth/me'),
 };
 
 export const workoutAPI = {
@@ -19,6 +20,8 @@ export const exerciseAPI = {
 
 export const muscleAPI = {
     getAll: () => client.get('/muscles'),
+    getData: (range = '7d') => client.get(`/muscle?range=${range}`),
+    getToday: () => client.get('/muscle?range=today'),
 };
 
 export const splitsAPI = {
@@ -58,4 +61,46 @@ export const setsAPI = {
     history: (exerciseId) => client.get(`/sets/history/${exerciseId}`),
     best: (exerciseId) => client.get(`/sets/best/${exerciseId}`),
     progress: (exerciseId) => client.get(`/sets/progress/${exerciseId}`),
+};
+
+// ========================================
+// NEW DASHBOARD FEATURE APIs
+// ========================================
+
+export const sessionAPI = {
+    getAll: () => client.get('/sessions'),
+    create: (data) => client.post('/sessions', data),
+    update: (id, data) => client.put(`/sessions/${id}`, data),
+    delete: (id) => client.delete(`/sessions/${id}`),
+    complete: (id) => client.post(`/sessions/${id}/complete`),
+    getUpcoming: () => client.get('/sessions/upcoming'),
+};
+
+export const nutritionAPI = {
+    getPlan: () => client.get('/nutrition/plan'),
+    updatePlan: (data) => client.put('/nutrition/plan', data),
+    getTodayLog: () => client.get('/nutrition/today'),
+    logMeal: (meal) => client.post('/nutrition/log-meal', meal),
+    getHistory: () => client.get('/nutrition/history'),
+    deleteMeal: (mealId) => client.delete(`/nutrition/meal/${mealId}`),
+};
+
+export const hydrationAPI = {
+    getToday: () => client.get('/hydration/today'),
+    addWater: (amountMl) => client.post('/hydration/add', { amountMl }),
+    getHistory: () => client.get('/hydration/history'),
+};
+
+export const dashboardAPI = {
+    getMetrics: () => client.get('/dashboard/metrics'),
+};
+
+export const liveWorkoutAPI = {
+    startLive: () => client.post('/workout/live/start'),
+    addExerciseLive: (exerciseId, exerciseName) => client.post('/workout/live/add-exercise', { exerciseId, exerciseName }),
+    addSetLive: (exerciseIndex, weight, reps) => client.post('/workout/live/add-set', { exerciseIndex, weight, reps }),
+    endLive: () => client.post('/workout/live/end'),
+    getLiveStatus: () => client.get('/workout/live/status'),
+    cancelLive: () => client.delete('/workout/live/cancel'),
+    logWorkout: (data) => client.post('/workout/log', data),
 };
