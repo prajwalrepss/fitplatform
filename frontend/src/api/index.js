@@ -12,6 +12,7 @@ export const workoutAPI = {
     status: () => client.get('/workout/status'),
     addExercise: (id) => client.post(`/workout/exercise/${id}`),
     history: () => client.get('/workout/history'),
+    saveSession: (data) => client.post('/workout/session', data),
 };
 
 export const exerciseAPI = {

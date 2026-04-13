@@ -71,6 +71,45 @@ router.get("/history", async (req, res, next) => {
 });
 
 // ========================================
+// AI EXERCISE TRACKING SESSION
+// ========================================
+router.post("/session", async (req, res, next) => {
+  try {
+    const { exercise, reps, duration, formScore, setsCompleted, setHistory, compensationCount } = req.body;
+
+    if (!exercise || !reps) {
+      return res.status(400).json({ success: false, message: "exercise and reps are required" });
+    }
+
+    const sessionData = {
+      userId: req.userId,
+      type: 'ai-tracking',
+      exercise,
+      reps: Number(reps),
+      duration: Number(duration) || 0,
+      formScore: Number(formScore) || 0,
+      setsCompleted: Number(setsCompleted) || 0,
+      setHistory: setHistory || [],
+      compensationCount: Number(compensationCount) || 0,
+      completedAt: new Date(),
+    };
+
+    // Save to WorkoutSession collection if available
+    try {
+      const session = new WorkoutSession(sessionData);
+      await session.save();
+      res.json({ success: true, data: session, message: "AI tracking session saved" });
+    } catch (saveErr) {
+      // If model doesn't have the right schema, just return the data
+      console.warn("Could not save to DB, returning data:", saveErr.message);
+      res.json({ success: true, data: sessionData, message: "Session recorded (not persisted to DB)" });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+// ========================================
 // LIVE WORKOUT SESSION ENDPOINTS
 // ========================================
 const liveWorkoutController = require("../controllers/liveWorkout");
