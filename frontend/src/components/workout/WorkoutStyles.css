@@ -1,0 +1,226 @@
+/* ============================================================
+   FitPlatform — Workout Module Styles (Scoped)
+   VIZO Obsidian Kinetic design tokens integrated into FitPlatform
+   ============================================================ */
+
+/* ===== Design Tokens ===== */
+.workout-module {
+  /* Surface palette */
+  --gb-bg: #071610;
+  --gb-surface: #071610;
+  --gb-surface-container: #13231c;
+  --gb-surface-high: #1d2d27;
+  --gb-surface-highest: #283831;
+  --gb-surface-low: #0f1f18;
+
+  /* Text colors */
+  --gb-text: #d4e7dd;
+  --gb-text-dim: #bbcabf;
+  --gb-text-muted: #86948a;
+
+  /* Primary */
+  --gb-primary: #4edea3;
+  --gb-primary-solid: #10b981;
+  --gb-primary-fixed: #6ffbbe;
+  --gb-on-primary: #003824;
+
+  /* Outline */
+  --gb-outline: #86948a;
+  --gb-outline-dim: #3c4a42;
+
+  /* Font */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--gb-text);
+}
+
+/* ===== Glass Morphism ===== */
+.workout-module .wk-glass-card {
+  background: rgba(19, 35, 28, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(78, 222, 163, 0.1);
+  border-radius: 1rem;
+}
+
+.workout-module .wk-glass-panel {
+  background: rgba(19, 35, 28, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(78, 222, 163, 0.15);
+  border-radius: 1rem;
+}
+
+/* ===== Gradient Text ===== */
+.workout-module .wk-text-gradient {
+  background: linear-gradient(135deg, #4edea3, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Headline Font ===== */
+.workout-module .wk-font-headline {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+/* ===== Exercise Card ===== */
+.workout-module .wk-exercise-card {
+  background: rgba(19, 35, 28, 0.5);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(78, 222, 163, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.workout-module .wk-exercise-card:hover {
+  border-color: rgba(78, 222, 163, 0.25);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
+  transform: translateY(-2px);
+}
+
+.workout-module .wk-exercise-card.selected {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+}
+
+/* ===== Buttons ===== */
+.workout-module .wk-btn-start {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(16, 185, 129, 0.8);
+  color: #003824;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.workout-module .wk-btn-start:hover {
+  background: rgba(16, 185, 129, 1);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.3);
+}
+
+.workout-module .wk-btn-start:active {
+  transform: scale(0.95);
+}
+
+/* ===== Slider Styling ===== */
+.workout-module input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+.workout-module input[type='range']::-webkit-slider-runnable-track {
+  background: #283831;
+  height: 6px;
+  border-radius: 999px;
+}
+
+.workout-module input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -6px;
+  background: linear-gradient(135deg, #10b981, #4edea3);
+  border: 2px solid #6ffbbe;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.workout-module input[type='range']::-moz-range-track {
+  background: #283831;
+  height: 6px;
+  border-radius: 999px;
+}
+
+.workout-module input[type='range']::-moz-range-thumb {
+  background: linear-gradient(135deg, #10b981, #4edea3);
+  border: 2px solid #6ffbbe;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+/* ===== Timer Glow ===== */
+.workout-module .wk-timer-glow {
+  background: radial-gradient(circle at center, rgba(78, 222, 163, 0.12) 0%, rgba(7, 22, 16, 0) 70%);
+}
+
+/* ===== Score Colors ===== */
+.workout-module .wk-score-good { color: #34d399; }
+.workout-module .wk-score-ok { color: #fbbf24; }
+.workout-module .wk-score-bad { color: #fb7185; }
+
+.workout-module .wk-score-bg-good { background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.3); }
+.workout-module .wk-score-bg-ok { background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); }
+.workout-module .wk-score-bg-bad { background: rgba(251, 113, 133, 0.15); border: 1px solid rgba(251, 113, 133, 0.3); }
+
+/* ===== Keyframe Animations ===== */
+@keyframes wk-pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 24px rgba(16, 185, 129, 0.8), 0 0 48px rgba(78, 222, 163, 0.3); }
+}
+
+@keyframes wk-confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes wk-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wk-fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wk-bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes wk-streak-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes wk-slide-in-top {
+  0% { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+/* ===== Animation Classes ===== */
+.workout-module .wk-animate-fade-in { animation: wk-fade-in 0.5s ease-out forwards; }
+.workout-module .wk-animate-fade-in-up { animation: wk-fade-in-up 0.5s ease-out forwards; }
+.workout-module .wk-animate-pulse-glow { animation: wk-pulse-glow 2s ease-in-out infinite; }
+.workout-module .wk-animate-streak-pulse { animation: wk-streak-pulse 0.8s ease-in-out infinite; }
+.workout-module .wk-animate-bounce-subtle { animation: wk-bounce-subtle 3s ease-in-out infinite; }
+.workout-module .wk-animate-slide-in { animation: wk-slide-in-top 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* ===== Confetti Particle ===== */
+.workout-module .wk-confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: wk-confetti-fall 3s linear forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===== Custom Scrollbar for Workout Module ===== */
+.workout-module ::-webkit-scrollbar { width: 6px; }
+.workout-module ::-webkit-scrollbar-track { background: transparent; }
+.workout-module ::-webkit-scrollbar-thumb { background: rgba(78, 222, 163, 0.15); border-radius: 3px; }
+.workout-module ::-webkit-scrollbar-thumb:hover { background: rgba(78, 222, 163, 0.25); }
