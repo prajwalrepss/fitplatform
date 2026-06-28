@@ -6,6 +6,7 @@ import SignupScreen from '../screens/SignupScreen';
 import MainNavigator from './MainNavigator';
 import WorkoutSessionScreen from '../screens/WorkoutSessionScreen';
 import WorkoutSummaryScreen from '../screens/WorkoutSummaryScreen';
+import WorkoutPlanScreen from '../screens/WorkoutPlanScreen';
 import { Colors } from '../theme';
 import Screens from '../constants/screens';
 
@@ -48,6 +49,10 @@ export default function RootNavigator({ initialRoute = Screens.LOGIN }) {
         name={Screens.WORKOUT_SUMMARY}
         component={WorkoutSummaryScreen}
         options={{ gestureEnabled: false }}
+      />
+      <Stack.Screen
+        name={Screens.WORKOUT_PLAN}
+        component={WorkoutPlanScreen}
       />
     </Stack.Navigator>
   );

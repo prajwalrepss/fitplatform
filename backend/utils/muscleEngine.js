@@ -38,7 +38,7 @@ function findExercise(exerciseIdOrName) {
  * Calculate raw muscle load from an array of workout exercises.
  *
  * @param {Array} workoutExercises — [{ exerciseId, exerciseName, sets: [{ reps, weight, completed }] }]
- * @returns {Object} raw muscle load — { chest_left: 12, ... }
+ * @returns {Object} raw muscle load — { chest_mid: 12, ... }
  */
 function calculateMuscleLoad(workoutExercises) {
     const load = {};
@@ -82,8 +82,8 @@ function calculateMuscleLoad(workoutExercises) {
 /**
  * Convert raw muscle loads to intensity levels (0–3).
  *
- * @param {Object} rawLoad — { chest_left: 12, ... }
- * @returns {Object} intensities — { chest_left: 3, ... }
+ * @param {Object} rawLoad — { chest_mid: 12, ... }
+ * @returns {Object} intensities — { chest_mid: 3, ... }
  */
 function toIntensityLevels(rawLoad) {
     const levels = {};

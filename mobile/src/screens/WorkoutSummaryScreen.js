@@ -4,7 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import ScreenBackground from '../components/ScreenBackground';
 import VitalisCard from '../components/VitalisCard';
 import VitalisButton from '../components/VitalisButton';
-import BodyEngine from '../components/BodyEngine';
+import TrainingBodyEngine from '../components/BodyEngine';
 import { Colors, Typography, Spacing } from '../theme';
 import Screens from '../constants/screens';
 
@@ -86,7 +86,7 @@ export default function WorkoutSummaryScreen({ navigation, route }) {
         {/* Body Engine */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>MUSCLES TARGETED</Text>
-          <BodyEngine style={styles.bodyEngine} selectedMuscles={musclesWorked} />
+          <TrainingBodyEngine style={styles.bodyEngine} selectedMuscles={musclesWorked} />
         </View>
 
         {/* Exercise Details */}

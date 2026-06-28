@@ -1,2 +1,2 @@
-export { default } from './BodyEngine';
-export { default as BodyEngine } from './BodyEngine';
+export { default } from './TrainingBodyEngine';
+export { default as TrainingBodyEngine } from './TrainingBodyEngine';

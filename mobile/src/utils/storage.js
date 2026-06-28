@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { DEV_BYPASS_AUTH, MOCK_USER, MOCK_TOKEN } from '../config/dev';
 
 const TOKEN_KEY = '@fitplatform_token';
 const USER_KEY = '@fitplatform_user';
@@ -15,6 +16,11 @@ export const saveToken = async (token) => {
 };
 
 export const getToken = async () => {
+  // DEVELOPMENT AUTH BYPASS
+  if (DEV_BYPASS_AUTH) {
+    return MOCK_TOKEN;
+  }
+
   try {
     return await AsyncStorage.getItem(TOKEN_KEY);
   } catch (error) {
@@ -43,6 +49,11 @@ export const saveUser = async (user) => {
 };
 
 export const getUser = async () => {
+  // DEVELOPMENT AUTH BYPASS
+  if (DEV_BYPASS_AUTH) {
+    return MOCK_USER;
+  }
+
   try {
     const json = await AsyncStorage.getItem(USER_KEY);
     return json ? JSON.parse(json) : null;

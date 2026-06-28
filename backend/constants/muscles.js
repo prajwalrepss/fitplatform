@@ -7,31 +7,31 @@
 
 const MUSCLE_MAP = {
     // Upper body — Front
-    chest:      ["chest_left", "chest_right"],
-    shoulders:  ["shoulders_left", "shoulders_right"],
-    biceps:     ["biceps_left", "biceps_right"],
-    triceps:    ["triceps_left", "triceps_right"],
-    forearms:   ["forearms_left", "forearms_right"],
+    chest:      ["chest_upper", "chest_mid", "chest_lower", "serratus_anterior"],
+    shoulders:  ["delts_front", "delts_side", "delts_rear", "rotator_cuff"],
+    biceps:     ["biceps_long", "biceps_short", "brachialis", "brachioradialis"],
+    triceps:    ["triceps_long", "triceps_lateral", "triceps_medial"],
+    forearms:   ["forearm_flexors", "forearm_extensors"],
 
     // Upper body — Back
-    back:       ["lats_left", "lats_right"],
-    lats:       ["lats_left", "lats_right"],
-    traps:      ["traps"],
-    rear_delts: ["rear_delts_left", "rear_delts_right"],
+    back:       ["lats", "teres_major", "rhomboids", "traps_upper", "traps_middle", "traps_lower", "erector_spinae"],
+    lats:       ["lats", "teres_major"],
+    traps:      ["traps_upper", "traps_middle", "traps_lower"],
+    rear_delts: ["delts_rear"],
 
     // Core
-    core:       ["abs_upper", "abs_lower", "obliques_left", "obliques_right"],
-    abs:        ["abs_upper", "abs_lower"],
-    obliques:   ["obliques_left", "obliques_right"],
+    core:       ["abs", "obliques_internal", "obliques_external", "transverse_abs", "iliopsoas"],
+    abs:        ["abs", "transverse_abs"],
+    obliques:   ["obliques_internal", "obliques_external"],
 
     // Lower body
-    quads:      ["quads_left", "quads_right"],
-    hamstrings: ["hamstrings_left", "hamstrings_right"],
-    glutes:     ["glutes_left", "glutes_right"],
-    calves:     ["calves_left", "calves_right"],
+    quads:      ["quad_rectus", "quad_vastus_lateral", "quad_vastus_medial", "quad_vastus_inter"],
+    hamstrings: ["ham_biceps", "ham_semitendinosus", "ham_semimembranosus"],
+    glutes:     ["glute_max", "glute_med", "glute_min"],
+    calves:     ["calf_gastro", "calf_soleus"],
 
     // Compound
-    lower_back: ["lower_back"],
+    lower_back: ["erector_spinae"],
 };
 
 /**
@@ -39,21 +39,19 @@ const MUSCLE_MAP = {
  * Useful for validation and initializing empty load maps.
  */
 const ALL_HEATMAP_IDS = [
-    "chest_left", "chest_right",
-    "shoulders_left", "shoulders_right",
-    "biceps_left", "biceps_right",
-    "triceps_left", "triceps_right",
-    "forearms_left", "forearms_right",
-    "lats_left", "lats_right",
-    "traps",
-    "rear_delts_left", "rear_delts_right",
-    "abs_upper", "abs_lower",
-    "obliques_left", "obliques_right",
-    "quads_left", "quads_right",
-    "hamstrings_left", "hamstrings_right",
-    "glutes_left", "glutes_right",
-    "calves_left", "calves_right",
-    "lower_back",
+    "chest_upper", "chest_mid", "chest_lower", "serratus_anterior",
+    "delts_front", "delts_side", "delts_rear", "rotator_cuff",
+    "biceps_long", "biceps_short", "brachialis", "brachioradialis",
+    "triceps_long", "triceps_lateral", "triceps_medial",
+    "forearm_flexors", "forearm_extensors",
+    "lats", "teres_major", "rhomboids", "traps_upper", "traps_middle", "traps_lower", "erector_spinae",
+    "abs", "obliques_internal", "obliques_external", "transverse_abs", "iliopsoas",
+    "glute_max", "glute_med", "glute_min",
+    "quad_rectus", "quad_vastus_lateral", "quad_vastus_medial", "quad_vastus_inter",
+    "ham_biceps", "ham_semitendinosus", "ham_semimembranosus",
+    "adductor_magnus", "gracilis", "pectineus", "tfl",
+    "calf_gastro", "calf_soleus",
+    "neck_scm", "neck_posterior",
 ];
 
 /**

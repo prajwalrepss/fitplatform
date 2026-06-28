@@ -9,8 +9,9 @@ const Screens = {
 
   // Main app
   HOME: 'Home',
-  SPLIT_LIBRARY: 'SplitLibrary',
+  SPLIT_LIBRARY: 'TrainingStyleDiscovery',
   WORKOUT_BUILDER: 'WorkoutBuilder',
+  WORKOUT_PLAN: 'WorkoutPlan',
   WORKOUT_SESSION: 'WorkoutSession',
   AI_COACH: 'AiCoach',
   WORKOUT_SUMMARY: 'WorkoutSummary',

@@ -32,6 +32,7 @@ const sessionsRoutes   = require("./routes/sessions");
 const nutritionRoutes  = require("./routes/nutrition");
 const hydrationRoutes  = require("./routes/hydration");
 const dashboardRoutes  = require("./routes/dashboard");
+const trainingRoutes   = require("./routes/training");
 
 // Health check
 app.get("/health", (req, res) => {
@@ -52,6 +53,7 @@ app.use("/sessions",   sessionsRoutes);
 app.use("/nutrition",  nutritionRoutes);
 app.use("/hydration",  hydrationRoutes);
 app.use("/dashboard",  dashboardRoutes);
+app.use("/training",   trainingRoutes);
 
 // NEW — muscle activation heatmap data
 app.use("/muscle",     muscleRoutes);
@@ -66,6 +68,7 @@ app.use("/api/sessions",   sessionsRoutes);
 app.use("/api/nutrition",  nutritionRoutes);
 app.use("/api/hydration",  hydrationRoutes);
 app.use("/api/dashboard",  dashboardRoutes);
+app.use("/api/training",   trainingRoutes);
 
 // ---------------------------------------------------------------------------
 // Central Error Handler (must be AFTER routes)

@@ -23,14 +23,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="0.14371945"
-     inkscape:cx="2463.1321"
+     inkscape:cx="2463.1322"
      inkscape:cy="1819.5171"
      inkscape:window-width="1920"
      inkscape:window-height="1094"
      inkscape:window-x="-11"
      inkscape:window-y="-11"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g84" />
+     inkscape:current-layer="g118" />
   <style
      id="style1">
 		.s0 { fill: #33343d } 
@@ -57,7 +57,8 @@
          id="g168">
         <g
            id="g86"
-           inkscape:label="Front">
+           inkscape:label="Front"
+           transform="matrix(1.3653703,0,0,1.2052492,-141.74104,-516.32379)">
           <g
              id="&lt;Group&gt;">
             <path
@@ -71,504 +72,504 @@
                id="g84">
               <g
                  id="g57"
-                 style="fill:#9299a5;fill-opacity:1.0">
+                 style="fill:#9299a5;fill-opacity:1">
                 <g
                    id="g29"
-                   style="fill:#9299a5;fill-opacity:1.0">
+                   style="fill:#9299a5;fill-opacity:1">
                   <g
                      id="g2"
                      inkscape:label="left_side_delt"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path2"
                        class="s2"
                        d="m 845.45,1180.63 c 0,0 -4.97,-67.95 16.99,-99.11 21.97,-31.16 57.73,-44.44 93.49,-53.64 0,0 -72.33,48.19 -110.48,152.75 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g3"
                      inkscape:label="left_front_delt"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path3"
                        class="s2"
                        d="m 966.92,1032.73 c 0,0 -85.37,69.57 -121.47,172.42 0,0 58.14,-39.59 95.33,-78.67 36.61,-38.49 41.8,-69.74 26.14,-93.75 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g4"
                      inkscape:label="left_biceps"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path4"
                        class="s2"
                        d="m 887.65,1189.48 c 0,0 -73.72,38.01 -90.09,95.88 -28.6,101.15 -5.28,158.87 -7.32,174.54 0,0 47.95,-48.8 67.61,-84.63 33.2,-60.54 56.36,-121.08 29.8,-185.79 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g5"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path5"
                        class="s3"
                        d="m 908.93,1264 c 0,0 -0.13,73.72 -68.07,156.22 0,0 34.25,-7.32 59.59,-48.19 25.34,-40.87 8.48,-108.03 8.48,-108.03 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g6"
                      inkscape:label="left_outer_forearm"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path6"
                        class="s3"
                        d="m 773.89,1420.22 c 0,0 13.63,53.98 -8.17,86.68 -21.8,32.7 -61.98,104.56 -203.32,208.77 0,0 58.11,-49.45 88.89,-118.86 19.13,-43.14 30.65,-84.46 59.94,-119.2 29.29,-34.74 62.66,-57.39 62.66,-57.39 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g7"
                      inkscape:label="left_inner_forearm"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path7"
                        class="s3"
                        d="m 594.41,1734.41 c 0,0 176.08,-126.02 225.12,-195.5 49.04,-69.47 35.42,-111.02 35.42,-111.02 0,0 -40.87,19.07 -57.22,41.55 -16.34,22.48 -27.8,59.27 -66.75,111.71 -44.02,59.26 -136.57,153.26 -136.57,153.26 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g8"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path8"
                        class="s3"
                        d="m 525.1,1728.09 c 0,0 -18.29,-6.06 -38.31,17.29 -16.34,19.04 -33.25,41.8 -33.75,46.54 -0.77,7.15 3.09,19.64 23.15,26.26 20.07,6.62 33.64,21.92 59.3,0.69 25.66,-21.24 31.43,-38.74 31.53,-52.04 0.1,-13.3 -22.97,-34.11 -41.92,-38.74 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g9"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path9"
                        class="s3"
                        d="m 503.94,1721.38 c 0,0 -22.81,8.98 -29.75,13.03 -10.22,5.96 -59.09,14.64 -66.17,7.41 -2.16,-2.2 -2.25,-4.19 -1.69,-5.38 1.13,-2.44 6.53,-3.09 10.13,-3.02 5.36,0.09 32.08,-1.71 43.68,-5.92 14.05,-5.1 33.2,-9.19 43.8,-6.12 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g10"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path10"
                        class="s3"
                        d="m 436.55,1804.12 c 0,0 -21.31,24.92 -26.96,34 -5.65,9.07 -16.98,24.64 -12.7,29.4 3.3,3.65 14.55,-11.72 23.37,-22.34 5.35,-6.44 19.91,-23.15 22.51,-27.33 2.89,-4.67 4.34,-8.54 -6.22,-13.73 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g11"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path11"
                        class="s3"
                        d="m 452.95,1818.9 c 0,0 -23.6,27.68 -31.25,36.5 -7.65,8.83 -19.13,24.5 -20.26,26.37 -1.12,1.88 -2.21,4.86 0.13,6.87 2.11,1.83 6.22,0.29 11.73,-4.57 5.52,-4.85 43.97,-47.73 46.67,-50.94 0,0 5.59,-5.85 2.17,-7.65 -3.81,-2 -5.9,-3.27 -9.19,-6.58 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g12"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path12"
                        class="s3"
                        d="m 472.8,1829.69 c 0,0 -28.65,32.47 -32.43,36.07 -3.78,3.59 -12.84,12.93 -14.36,14.97 -1.51,2.04 -5.22,7.24 -1.64,10.26 3.58,3.02 9.36,-1.09 15.87,-6.78 6.99,-6.11 29.05,-27.78 34.55,-33.27 0,0 10.85,-10.56 12.68,-13.85 1.82,-3.29 -5.11,0.33 -14.67,-7.4 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g13"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path13"
                        class="s3"
                        d="m 497.07,1840.31 c 0,0 -16.72,17.19 -22.8,22.87 -6.09,5.69 -15.82,14.31 -11.99,18.32 4.89,5.11 21.37,-10.45 27.35,-15.39 5.99,-4.93 19.46,-17.82 22.71,-22.13 3.26,-4.3 -1.44,1.74 -15.27,-3.67 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g14"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path14"
                        class="s3"
                        d="m 549.11,1728.1 c 0,0 18.05,12.1 21.63,20.44 3.58,8.34 19.41,-24.18 32.35,-39 12.95,-14.81 -9.02,1.37 -53.98,18.56 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g15"
                      inkscape:label="left_upper_chest"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path15"
                        class="s3"
                        d="m 1027.61,1047.5 c 32.56,-0.71 70.66,1.54 90.61,4.77 0,0 26.51,3.2 27.5,41.51 0.84,31.98 6.73,86.29 -0.95,118.01 -7.29,30.11 -10.41,72.92 -102.85,58.89 C 945.55,1256.06 907,1178.07 907,1178.07 c 0,0 35.98,-22.98 57.96,-56.7 21.97,-33.72 23.54,-73.01 62.65,-73.87 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g16"
                      inkscape:label="left_anterior_delt"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path16"
                        class="s3"
                        d="m 994.28,1033.09 c 71.65,-4.97 129.09,8.78 124.11,0.66 -21.46,-34.92 -36.64,-58.23 -36.64,-58.23 -30.93,7.99 -64.36,28.92 -85.08,43.49 0,0 -23.32,15.53 -2.39,14.08 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g17"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path17"
                        class="s3"
                        d="m 1150.96,1049.17 c 0,0 -54.64,-40.75 -55.66,-122.14 0,0 24.38,13.45 26.11,18.74 3.26,9.95 6.54,56.82 29.55,103.4 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g18"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path18"
                        class="s3"
                        d="m 1156.46,943.06 c 18.38,0 26.07,-1.36 25.05,10.85 -1.02,12.21 -21.45,70.54 -21.45,70.54 h -1.7 c 0,0 -20.43,-58.33 -21.45,-70.54 -1.03,-12.21 6.67,-10.85 25.04,-10.85 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g19"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path19"
                        class="s3"
                        d="m 1141.18,1340.31 c 0,0 4.78,-20.08 -0.04,-38.71 -4.82,-18.63 -26.5,-15.67 -54.71,-6.42 -28.21,9.25 -40.79,44.93 -44.51,75.08 0,0 54.6,-39.98 99.26,-29.95 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g20"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path20"
                        class="s3"
                        d="m 1110.61,1362.34 c -19.62,1.96 -37.86,13.22 -53.52,23.16 0,0 -15.78,8.12 -14.09,27.55 1.28,14.62 2.08,33.23 2.08,33.23 0,0 52.53,-18.29 97.08,-14.53 0,0 2.3,-36.57 0,-52.71 -2.31,-16.13 -18.47,-18 -31.55,-16.7 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g21"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path21"
                        class="s3"
                        d="m 1049.6,1477.48 c 0,0 -0.79,-12.97 10.89,-15.56 15.6,-3.47 50.07,-10.72 73.57,-9.34 0,0 8.31,0.31 9.12,11.41 1.06,14.56 2.46,70.89 2.46,70.89 0,0 -94.85,12.96 -96.04,-57.4 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g22"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path22"
                        class="s3"
                        d="m 1057.26,1535.82 c 0,0 21.46,22.87 78,22.21 0,0 11.74,-0.33 12.6,13.73 1.11,18.33 0,196.03 0,196.03 0,0 -79.7,-17.7 -90.6,-231.97 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g23"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path23"
                        class="s3"
                        d="m 912.08,1210.43 c 0,0 23.25,137.42 54.92,175.23 0,0 -13.78,-55.94 -7.14,-90.68 6.64,-34.74 0.83,-26.33 -47.78,-84.55 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g24"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path24"
                        class="s3"
                        d="m 975.35,1370.26 c 0,0 16.38,10.6 33.59,12.5 17.21,1.9 17.65,23.09 4.88,23.36 -12.78,0.28 -30.95,-6.2 -38.47,-35.86 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g25"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path25"
                        class="s3"
                        d="m 973.93,1324.11 c 0,0 17.86,10.41 36.46,11.65 18.59,1.24 19.49,23.44 5.73,24.29 -13.77,0.84 -33.48,-5.15 -42.19,-35.94 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g26"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path26"
                        class="s3"
                        d="m 976.22,1278.39 c 0,0 18.89,10.92 39.27,12.76 20.37,1.84 19.7,23.91 4.48,24.3 -15.22,0.39 -36.47,-6.21 -43.75,-37.06 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g27"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path27"
                        class="s3"
                        d="m 981.45,1418.27 c 0,0 11.77,10.44 31.09,12.25 0,0 5.16,-0.61 7.09,8.36 1.92,8.98 -8.56,12.51 -16.56,11.16 -8.01,-1.36 -18.93,-9.94 -21.62,-31.77 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g28"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path28"
                        class="s3"
                        d="m 989.82,1466.71 c 0,0 33.12,16.03 38.01,47.68 4.9,31.64 11.71,153.81 31.47,201.28 0,0 -51.97,-23.18 -59.7,-62.92 -7.74,-39.74 5.2,-73.43 -9.78,-186.04 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                 </g>
                 <g
                    id="g56"
-                   style="fill:#9299a5;fill-opacity:1.0">
+                   style="fill:#9299a5;fill-opacity:1">
                   <g
                      id="g30"
                      inkscape:label="right_side_delt"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path29"
                        class="s2"
                        d="m 1472.97,1180.63 c 0,0 4.97,-67.95 -17,-99.11 -21.96,-31.16 -57.72,-44.44 -93.48,-53.64 0,0 72.33,48.19 110.48,152.75 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g31"
                      inkscape:label="right_front_delt"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path30"
                        class="s2"
                        d="m 1351.5,1032.73 c 0,0 85.36,69.57 121.47,172.42 0,0 -58.14,-39.59 -95.33,-78.67 -36.61,-38.49 -41.8,-69.74 -26.14,-93.75 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g32"
                      inkscape:label="right_biceps"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path31"
                        class="s2"
                        d="m 1430.77,1189.48 c 0,0 73.72,38.01 90.08,95.88 28.61,101.15 5.28,158.87 7.33,174.54 0,0 -47.95,-48.8 -67.61,-84.63 -33.2,-60.54 -56.36,-121.08 -29.8,-185.79 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g33"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path32"
                        class="s3"
                        d="m 1409.49,1264 c 0,0 0.13,73.72 68.07,156.22 0,0 -34.25,-7.32 -59.59,-48.19 -25.34,-40.87 -8.48,-108.03 -8.48,-108.03 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g34"
                      inkscape:label="right_outer_forearm"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path33"
                        class="s3"
                        d="m 1544.52,1420.22 c 0,0 -13.62,53.98 8.18,86.68 21.79,32.7 61.98,104.56 203.32,208.77 0,0 -58.11,-49.45 -88.89,-118.86 -19.13,-43.14 -30.65,-84.46 -59.94,-119.2 -29.29,-34.74 -62.67,-57.39 -62.67,-57.39 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g35"
                      inkscape:label="right_inner_forearm"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path34"
                        class="s3"
                        d="m 1724.01,1734.41 c 0,0 -176.08,-126.02 -225.12,-195.5 -49.05,-69.47 -35.42,-111.02 -35.42,-111.02 0,0 40.87,19.07 57.21,41.55 16.35,22.48 27.8,59.27 66.76,111.71 44.02,59.26 136.57,153.26 136.57,153.26 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g36"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path35"
                        class="s3"
                        d="m 1793.32,1728.09 c 0,0 18.28,-6.06 38.31,17.29 16.33,19.04 33.25,41.8 33.75,46.54 0.77,7.15 -3.09,19.64 -23.16,26.26 -20.06,6.62 -33.63,21.92 -59.29,0.69 -25.66,-21.24 -31.43,-38.74 -31.53,-52.04 -0.1,-13.3 22.97,-34.11 41.92,-38.74 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g37"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path36"
                        class="s3"
                        d="m 1814.47,1721.38 c 0,0 22.82,8.98 29.76,13.03 10.22,5.96 59.09,14.64 66.17,7.41 2.16,-2.2 2.25,-4.19 1.69,-5.38 -1.14,-2.44 -6.53,-3.09 -10.13,-3.02 -5.37,0.09 -32.08,-1.71 -43.68,-5.92 -14.05,-5.1 -33.21,-9.19 -43.81,-6.12 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g38"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path37"
                        class="s3"
                        d="m 1881.87,1804.12 c 0,0 21.3,24.92 26.96,34 5.65,9.07 16.98,24.64 12.7,29.4 -3.3,3.65 -14.55,-11.72 -23.37,-22.34 -5.35,-6.44 -19.91,-23.15 -22.51,-27.33 -2.9,-4.67 -4.34,-8.54 6.22,-13.73 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g39"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path38"
                        class="s3"
                        d="m 1865.47,1818.9 c 0,0 23.59,27.68 31.25,36.5 7.65,8.83 19.13,24.5 20.26,26.37 1.12,1.88 2.2,4.86 -0.13,6.87 -2.12,1.83 -6.22,0.29 -11.73,-4.57 -5.52,-4.85 -43.97,-47.73 -46.67,-50.94 0,0 -5.59,-5.85 -2.17,-7.65 3.81,-2 5.9,-3.27 9.19,-6.58 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g40"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path39"
                        class="s3"
                        d="m 1845.62,1829.69 c 0,0 28.65,32.47 32.43,36.07 3.78,3.59 12.84,12.93 14.35,14.97 1.52,2.04 5.23,7.24 1.65,10.26 -3.59,3.02 -9.36,-1.09 -15.87,-6.78 -6.99,-6.11 -29.05,-27.78 -34.55,-33.27 0,0 -10.85,-10.56 -12.68,-13.85 -1.83,-3.29 5.11,0.33 14.67,-7.4 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g41"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path40"
                        class="s3"
                        d="m 1821.34,1840.31 c 0,0 16.72,17.19 22.81,22.87 6.09,5.69 15.82,14.31 11.98,18.32 -4.88,5.11 -21.36,-10.45 -27.34,-15.39 -5.99,-4.93 -19.46,-17.82 -22.71,-22.13 -3.26,-4.3 1.44,1.74 15.26,-3.67 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g42"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path41"
                        class="s3"
                        d="m 1769.3,1728.1 c 0,0 -18.05,12.1 -21.62,20.44 -3.58,8.34 -19.41,-24.18 -32.36,-39 -12.94,-14.81 9.03,1.37 53.98,18.56 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g43"
                      inkscape:label="right_upper_chest"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path42"
                        class="s3"
                        d="m 1290.81,1047.5 c -32.56,-0.71 -70.66,1.54 -90.61,4.77 0,0 -26.51,3.2 -27.51,41.51 -0.83,31.98 -6.73,86.29 0.96,118.01 7.29,30.11 8.44,73.14 100.88,59.12 96.37,-14.63 136.89,-92.84 136.89,-92.84 0,0 -35.99,-22.98 -57.96,-56.7 -21.97,-33.72 -23.55,-73.01 -62.65,-73.87 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g44"
                      inkscape:label="right_anterior_delt"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path43"
                        class="s3"
                        d="m 1324.13,1033.09 c -71.64,-4.97 -129.09,8.78 -124.1,0.66 21.46,-34.92 36.64,-58.23 36.64,-58.23 30.93,7.99 64.36,28.92 85.08,43.49 0,0 23.31,15.53 2.38,14.08 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g45"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path44"
                        class="s3"
                        d="m 1167.46,1049.17 c 0,0 54.63,-40.75 55.65,-122.14 0,0 -24.25,12.43 -26.11,18.74 -2.96,10.04 -6.53,56.82 -29.54,103.4 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g46"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path45"
                        class="s3"
                        d="m 1176.22,1340.31 c 0,0 -4.78,-20.08 0.04,-38.71 4.82,-18.63 26.51,-15.67 54.71,-6.42 28.21,9.25 40.79,44.93 44.51,75.08 0,0 -54.6,-39.98 -99.26,-29.95 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g47"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path46"
                        class="s3"
                        d="m 1206.79,1362.34 c 19.62,1.96 37.86,13.22 53.52,23.16 0,0 15.79,8.12 14.09,27.55 -1.27,14.62 -2.08,33.23 -2.08,33.23 0,0 -52.53,-18.29 -97.07,-14.53 0,0 -2.31,-36.57 0,-52.71 2.3,-16.13 18.46,-18 31.54,-16.7 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g48"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path47"
                        class="s3"
                        d="m 1267.81,1477.48 c 0,0 0.79,-12.97 -10.9,-15.56 -15.6,-3.47 -50.07,-10.72 -73.57,-9.34 0,0 -8.31,0.31 -9.12,11.41 -1.06,14.56 -2.46,70.89 -2.46,70.89 0,0 94.85,12.96 96.05,-57.4 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g49"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path48"
                        class="s3"
                        d="m 1260.14,1535.82 c 0,0 -21.46,22.87 -77.99,22.21 0,0 -11.75,-0.33 -12.61,13.73 -1.11,18.33 0,196.03 0,196.03 0,0 79.7,-17.7 90.6,-231.97 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g50"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path49"
                        class="s3"
                        d="m 1406.34,1210.43 c 0,0 -23.25,137.42 -54.92,175.23 0,0 13.78,-55.94 7.14,-90.68 -6.64,-34.74 -0.83,-26.33 47.78,-84.55 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g51"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path50"
                        class="s3"
                        d="m 1343.07,1370.26 c 0,0 -16.38,10.6 -33.59,12.5 -17.21,1.9 -17.65,23.09 -4.88,23.36 12.78,0.28 30.94,-6.2 38.47,-35.86 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g52"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path51"
                        class="s3"
                        d="m 1344.49,1324.11 c 0,0 -17.87,10.41 -36.46,11.65 -18.59,1.24 -19.5,23.44 -5.73,24.29 13.77,0.84 33.48,-5.15 42.19,-35.94 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g53"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path52"
                        class="s3"
                        d="m 1342.19,1278.39 c 0,0 -18.88,10.92 -39.26,12.76 -20.37,1.84 -19.7,23.91 -4.48,24.3 15.22,0.39 36.47,-6.21 43.74,-37.06 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g54"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path53"
                        class="s3"
                        d="m 1336.97,1418.27 c 0,0 -11.78,10.44 -31.09,12.25 0,0 -5.16,-0.61 -7.09,8.36 -1.93,8.98 8.55,12.51 16.56,11.16 8.01,-1.36 18.92,-9.94 21.62,-31.77 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g55"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path54"
                        class="s3"
                        d="m 1328.6,1466.71 c 0,0 -33.12,16.03 -38.02,47.68 -4.89,31.64 -11.71,153.81 -31.46,201.28 0,0 51.97,-23.18 59.7,-62.92 7.74,-39.74 -5.21,-73.43 9.78,-186.04 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                 </g>
               </g>
@@ -763,7 +764,8 @@
         </g>
         <g
            id="g155"
-           inkscape:label="Back">
+           inkscape:label="Back"
+           transform="matrix(1.3292844,0,0,1.1719655,651.95062,-489.95205)">
           <g
              id="g87">
             <path
@@ -889,7 +891,7 @@
                        id="path101"
                        class="s2"
                        d="m 2547.54,1215.15 c 0,0 -55.61,61.61 -59.06,166.21 0,0 42.71,-76.97 59.06,-166.21 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g103"
@@ -934,194 +936,195 @@
                 </g>
                 <g
                    id="g129"
-                   style="fill:#9299a5;fill-opacity:1.0">
+                   style="fill:#9299a5;fill-opacity:1">
                   <g
                      id="g115"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <g
                        id="g109"
-                       style="fill:#9299a5;fill-opacity:1.0">
+                       style="fill:#9299a5;fill-opacity:1">
                       <path
                          id="path108"
                          class="s3"
                          d="m 3501.66,1727.58 c 0,0 18.28,-6.06 38.3,17.28 16.34,19.04 33.25,41.8 33.76,46.55 0.76,7.15 -3.1,19.63 -23.16,26.26 -20.06,6.62 -33.63,21.92 -59.3,0.69 -25.66,-21.24 -31.42,-38.75 -31.52,-52.05 -0.1,-13.3 22.96,-34.11 41.92,-38.73 z"
-                         style="fill:#9299a5;fill-opacity:1.0" />
+                         style="fill:#9299a5;fill-opacity:1" />
                     </g>
                     <g
                        id="g110"
-                       style="fill:#9299a5;fill-opacity:1.0">
+                       style="fill:#9299a5;fill-opacity:1">
                       <path
                          id="path109"
                          class="s3"
                          d="m 3522.81,1720.87 c 0,0 22.81,8.97 29.76,13.02 10.21,5.96 59.09,14.65 66.16,7.41 2.16,-2.2 2.25,-4.18 1.7,-5.38 -1.14,-2.44 -6.53,-3.08 -10.14,-3.02 -5.36,0.1 -32.07,-1.7 -43.68,-5.92 -14.04,-5.09 -33.2,-9.18 -43.8,-6.11 z"
-                         style="fill:#9299a5;fill-opacity:1.0" />
+                         style="fill:#9299a5;fill-opacity:1" />
                     </g>
                     <g
                        id="g111"
-                       style="fill:#9299a5;fill-opacity:1.0">
+                       style="fill:#9299a5;fill-opacity:1">
                       <path
                          id="path110"
                          class="s3"
                          d="m 3590.2,1803.61 c 0,0 21.31,24.92 26.96,33.99 5.65,9.08 16.98,24.65 12.7,29.4 -3.29,3.66 -14.55,-11.72 -23.37,-22.33 -5.34,-6.44 -19.91,-23.16 -22.5,-27.33 -2.9,-4.67 -4.35,-8.54 6.21,-13.73 z"
-                         style="fill:#9299a5;fill-opacity:1.0" />
+                         style="fill:#9299a5;fill-opacity:1" />
                     </g>
                     <g
                        id="g112"
-                       style="fill:#9299a5;fill-opacity:1.0">
+                       style="fill:#9299a5;fill-opacity:1">
                       <path
                          id="path111"
                          class="s3"
                          d="m 3573.81,1818.39 c 0,0 23.59,27.67 31.24,36.5 7.66,8.83 19.14,24.49 20.26,26.37 1.13,1.87 2.21,4.86 -0.12,6.87 -2.12,1.83 -6.22,0.28 -11.74,-4.57 -5.51,-4.86 -43.96,-47.73 -46.66,-50.94 0,0 -5.6,-5.86 -2.18,-7.65 3.82,-2.01 5.9,-3.27 9.2,-6.58 z"
-                         style="fill:#9299a5;fill-opacity:1.0" />
+                         style="fill:#9299a5;fill-opacity:1" />
                     </g>
                     <g
                        id="g113"
-                       style="fill:#9299a5;fill-opacity:1.0">
+                       style="fill:#9299a5;fill-opacity:1">
                       <path
                          id="path112"
                          class="s3"
                          d="m 3553.95,1829.18 c 0,0 28.65,32.47 32.43,36.06 3.79,3.6 12.84,12.94 14.36,14.98 1.52,2.03 5.23,7.24 1.64,10.26 -3.58,3.02 -9.36,-1.09 -15.87,-6.78 -6.99,-6.11 -29.05,-27.79 -34.55,-33.28 0,0 -10.85,-10.55 -12.67,-13.84 -1.83,-3.3 5.11,0.33 14.66,-7.4 z"
-                         style="fill:#9299a5;fill-opacity:1.0" />
+                         style="fill:#9299a5;fill-opacity:1" />
                     </g>
                     <g
                        id="g114"
-                       style="fill:#9299a5;fill-opacity:1.0">
+                       style="fill:#9299a5;fill-opacity:1">
                       <path
                          id="path113"
                          class="s3"
                          d="m 3529.68,1839.8 c 0,0 16.72,17.18 22.81,22.87 6.08,5.69 15.82,14.3 11.98,18.32 -4.89,5.11 -21.36,-10.46 -27.35,-15.39 -5.98,-4.94 -19.45,-17.82 -22.71,-22.13 -3.25,-4.31 1.44,1.74 15.27,-3.67 z"
-                         style="fill:#9299a5;fill-opacity:1.0" />
+                         style="fill:#9299a5;fill-opacity:1" />
                     </g>
                   </g>
                   <g
                      id="g116"
                      inkscape:label="right_rear_delt_upper"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path115"
                        class="s2"
                        d="m 3180.74,1185.18 c 0,0 5.79,-78.33 -22.14,-110.34 -27.92,-32.02 -52.27,-32.36 -97.23,-41.89 0,0 -24.35,109.32 119.37,152.23 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g117"
                      inkscape:label="right_neck_trap"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path116"
                        class="s3"
                        d="m 3050.74,1029.71 c 0,0 -42.33,-32.52 -100.23,-48.19 0,0 -63.37,-11.06 -63.54,-101.82 0,0 0.09,-8.43 -5.1,-8.39 -5.64,0.04 -4.53,4.31 -4.93,9.91 -0.36,5.14 2.49,417.89 2.49,417.89 27.07,-24.35 54.22,-119.55 59.84,-143.56 0,0 29.33,-98.94 111.47,-125.84 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g118"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1"
+                     inkscape:label="right_mid_trap">
                     <path
                        id="path117"
                        class="s3"
                        d="m 2929.51,1252.89 c -8.51,22.17 -23.08,50.28 -46.43,68.52 v 25.89 c 0,92.63 108.98,238.91 108.98,238.91 0,0 -15.66,-105.41 53.81,-171.48 33.95,-32.28 46.97,-86.07 46.97,-86.07 25.25,-67.76 24.98,-152.16 24.98,-152.16 0,0 -80.12,26.56 -136.11,29.9 -37.61,2.23 -52.2,46.49 -52.2,46.49 q 0.29,-0.77 0.58,-1.54 z"
                        inkscape:label="right_mid_trap"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g119"
                      inkscape:label="right_upper_trap"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path118"
                        class="s3"
                        d="m 3041.75,1048.94 c -81.22,54.67 -91.41,141.86 -91.41,141.86 96.04,0.37 150.02,-26.99 150.02,-26.99 0,0 -62.46,-34.91 -58.63,-114.61 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g120"
                      inkscape:label="right_lats"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path119"
                        class="s3"
                        d="m 2881.47,1418.39 c 0,0 10.29,76.21 100.03,178.55 0,0 -39.16,97.46 -98.42,152.43 0,0 -5.24,-299.16 -1.61,-330.98 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g121"
                      inkscape:label="right_rhomboids"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path120"
                        class="s3"
                        d="m 3014.68,1600.51 c 6.63,8.56 14.85,18.42 20.29,26.74 0,0 -10,-20.75 9.54,-189.7 0,0 -27.41,32.6 -39.42,104.88 0,0 -7.62,35.85 9.59,58.08 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g122"
                      inkscape:label="right_infraspinatus"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path121"
                        class="s3"
                        d="m 3131.36,1176.5 c 0,0 60.28,40.36 54.15,104.73 -6.13,64.37 -24.95,94.03 -4.27,128.73 0,0 -53.38,-9.15 -63.42,-58.94 -10.04,-49.78 12,-92.27 13.54,-174.52 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g123"
-                     style="display:inline;fill:#9299a5;fill-opacity:1.0"
+                     style="display:inline;fill:#9299a5;fill-opacity:1"
                      inkscape:label="right_teres_major">
                     <path
                        id="path122"
                        class="s2"
                        d="m 3189.6,1215.15 c 0,0 55.6,61.61 59.05,166.21 0,0 -42.71,-76.97 -59.05,-166.21 z"
-                       style="display:inline;fill:#9299a5;fill-opacity:1.0" />
+                       style="display:inline;fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g124"
                      inkscape:label="right_rear_delt"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path123"
                        class="s3"
                        d="m 3195.73,1293.23 c 0,0 -12.09,75.52 -4.43,100.05 7.66,24.52 24.86,35.15 37.12,34.09 12.26,-1.06 11.75,-31.71 -5.11,-63.38 -16.86,-31.68 -24.86,-50.75 -27.58,-70.76 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g125"
                      inkscape:label="right_triceps"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path124"
                        class="s3"
                        d="m 3252.26,1409.96 c 0,0 50.07,40.19 68.63,74.08 16.16,29.51 46.83,107.79 78.84,148.49 7.97,10.13 33.55,41.04 33.55,41.04 0,0 -69.79,-60.88 -100.98,-101.49 -31.51,-41.03 -57.9,-58.92 -80.04,-162.12 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g126"
                      inkscape:label="right_brachioradialis"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path125"
                        class="s3"
                        d="m 3176.04,1429.08 c -2.32,-9.21 64.37,12.77 73.56,36.78 9.2,24.01 31.27,77.61 88.66,130.57 0,0 -35.76,-19.67 -52.62,-26.56 -16.86,-6.9 -84.29,-40.49 -109.6,-140.79 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g127"
                      inkscape:label="right_forearm_extensors"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path126"
                        class="s3"
                        d="m 3181.24,1470.25 c 0,0 25.73,77.14 110.02,119.54 79.62,40.05 172.67,137.08 172.67,137.08 0,0 -104.28,-75.81 -161.43,-104.39 -60.28,-30.14 -108.55,-84.8 -121.26,-152.23 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                   <g
                      id="g128"
                      inkscape:label="right_forearm_outer_back"
-                     style="fill:#9299a5;fill-opacity:1.0">
+                     style="fill:#9299a5;fill-opacity:1">
                     <path
                        id="path127"
                        class="s3"
                        d="m 3328.55,1654.16 c 0,0 80.21,52.18 103.71,69.22 23.5,17.04 13.18,20.43 6.19,20.66 -6.98,0.24 -19.73,-9.59 -35.82,-24.23 -18.57,-16.89 -74.08,-65.65 -74.08,-65.65 z"
-                       style="fill:#9299a5;fill-opacity:1.0" />
+                       style="fill:#9299a5;fill-opacity:1" />
                   </g>
                 </g>
                 <g

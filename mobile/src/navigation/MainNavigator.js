@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
-import SplitLibraryScreen from '../screens/SplitLibraryScreen';
+import TrainingStyleDiscoveryScreen from '../screens/TrainingStyleDiscoveryScreen';
 import TrainingIntelScreen from '../screens/TrainingIntelScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { Colors, Typography } from '../theme';
@@ -50,7 +50,7 @@ export default function MainNavigator() {
     >
       <Tab.Screen
         name={Screens.TAB_HOME}
-        component={SplitLibraryScreen}
+        component={TrainingStyleDiscoveryScreen}
         options={{ title: 'Home' }}
       />
       <Tab.Screen

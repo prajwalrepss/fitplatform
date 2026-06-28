@@ -5,7 +5,7 @@ import ScreenBackground from '../components/ScreenBackground';
 import VitalisCard from '../components/VitalisCard';
 import VitalisChip from '../components/VitalisChip';
 import VitalisButton from '../components/VitalisButton';
-import BodyEngine from '../components/BodyEngine';
+import TrainingBodyEngine from '../components/BodyEngine';
 import { Colors, Typography, Spacing } from '../theme';
 import Screens from '../constants/screens';
 
@@ -62,7 +62,7 @@ export default function WorkoutBuilderScreen({ navigation }) {
 
         {/* BodyEngine */}
         <View style={styles.section}>
-          <BodyEngine
+          <TrainingBodyEngine
             style={styles.bodyEngine}
             selectedMuscles={activeCategory !== 'All' ? [activeCategory] : []}
           />

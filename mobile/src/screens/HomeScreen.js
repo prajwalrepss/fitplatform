@@ -11,7 +11,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import ScreenBackground from '../components/ScreenBackground';
 import VitalisCard from '../components/VitalisCard';
 import VitalisButton from '../components/VitalisButton';
-import BodyEngine from '../components/BodyEngine';
+import TrainingBodyEngine from '../components/BodyEngine';
 import { Colors, Typography, Spacing } from '../theme';
 import { getUser } from '../utils/storage';
 import Screens from '../constants/screens';
@@ -78,7 +78,7 @@ export default function HomeScreen({ navigation }) {
         {/* Body Engine */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>YOUR BODY</Text>
-          <BodyEngine style={styles.bodyEngine} />
+          <TrainingBodyEngine style={styles.bodyEngine} />
         </View>
 
         {/* Quick Actions */}

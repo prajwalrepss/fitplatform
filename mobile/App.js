@@ -15,6 +15,7 @@ import { getToken } from './src/utils/storage';
 import { authAPI } from './src/services/api';
 import Screens from './src/constants/screens';
 import { Colors } from './src/theme';
+import { DEV_BYPASS_AUTH } from './src/config/dev';
 
 // Prevent the splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -33,6 +34,13 @@ export default function App() {
 
   useEffect(() => {
     async function checkAuth() {
+      // DEVELOPMENT AUTH BYPASS
+      if (DEV_BYPASS_AUTH) {
+        setInitialRoute(Screens.HOME);
+        setAppReady(true);
+        return;
+      }
+
       try {
         const token = await getToken();
         if (token) {
