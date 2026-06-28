@@ -21,6 +21,7 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window');
 // MUSCLE FILTER OPTIONS
 // ────────────────────────────────────────────────────────────────────────────
 const MUSCLE_FILTERS = [
+  { id: 'all', label: 'ALL' },
   { id: 'chest', label: 'CHEST' },
   { id: 'back', label: 'BACK' },
   { id: 'legs', label: 'LEGS' },
@@ -85,26 +86,58 @@ const MUSCLE_DISPLAY_NAMES = {
  * muscle filter chips, focus readout, and split program cards.
  */
 export default function SplitLibraryScreen({ navigation }) {
-  const [selectedMuscle, setSelectedMuscle] = useState('chest');
+  const [selectedMuscle, setSelectedMuscle] = useState('all');
   const [activeSplit, setActiveSplit] = useState(SAMPLE_SPLITS[0]);
+
+  // Derive splits matching the selected muscle filter
+  const filteredSplits = SAMPLE_SPLITS.filter(
+    (split) => selectedMuscle === 'all' || split.muscleGroups.includes(selectedMuscle)
+  );
 
   // Handle muscle group taps from BodyEngine
   const handleMusclePress = useCallback((muscleId, muscleGroup) => {
-    setSelectedMuscle(muscleGroup);
-  }, []);
+    if (muscleGroup && muscleGroup !== 'unknown') {
+      setSelectedMuscle(muscleGroup);
+      
+      // If the currently active split doesn't target the new muscle, auto-select first matching split
+      const matches = SAMPLE_SPLITS.filter((s) => s.muscleGroups.includes(muscleGroup));
+      if (matches.length > 0 && !matches.find((s) => s.id === activeSplit.id)) {
+        setActiveSplit(matches[0]);
+      }
+    }
+  }, [activeSplit]);
 
   // Handle chip filter taps
   const handleFilterPress = useCallback((filterId) => {
     setSelectedMuscle(filterId);
-  }, []);
+    
+    // Auto-select first matching split if the active one isn't in the list
+    if (filterId !== 'all') {
+      const matches = SAMPLE_SPLITS.filter((s) => s.muscleGroups.includes(filterId));
+      if (matches.length > 0 && !matches.find((s) => s.id === activeSplit.id)) {
+        setActiveSplit(matches[0]);
+      }
+    }
+  }, [activeSplit]);
 
   // Handle split card select
   const handleSelectSplit = useCallback((split) => {
     setActiveSplit(split);
-    // Future: navigate to WorkoutBuilder or show modal
+    // Highlight split targeted muscles on selection by switching filter to ALL if not already
+    setSelectedMuscle('all');
   }, []);
 
-  const muscleFocus = MUSCLE_DISPLAY_NAMES[selectedMuscle] || 'Select a\nMuscle';
+  // Derive muscles to highlight on the BodyEngine SVG
+  const getHighlightedMuscles = () => {
+    if (selectedMuscle && selectedMuscle !== 'all') {
+      return [selectedMuscle];
+    }
+    return activeSplit ? activeSplit.muscleGroups : [];
+  };
+
+  const muscleFocus = selectedMuscle === 'all'
+    ? (activeSplit ? activeSplit.name : 'All Muscles')
+    : (MUSCLE_DISPLAY_NAMES[selectedMuscle] || 'Select a\nMuscle');
 
   return (
     <View style={styles.screenContainer}>
@@ -141,7 +174,7 @@ export default function SplitLibraryScreen({ navigation }) {
         {/* ── Body Engine Visualization ── */}
         <View style={styles.bodyEngineContainer}>
           <BodyEngine
-            selectedMuscles={[selectedMuscle]}
+            selectedMuscles={getHighlightedMuscles()}
             onMusclePress={handleMusclePress}
             highlightColor="#6D5DF6"
             interactive
@@ -177,7 +210,7 @@ export default function SplitLibraryScreen({ navigation }) {
         </View>
 
         {/* ── Split Cards ── */}
-        {SAMPLE_SPLITS.map((split) => (
+        {filteredSplits.map((split) => (
           <SplitCard
             key={split.id}
             split={split}
