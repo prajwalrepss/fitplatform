@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, ActivityIndicator, StyleSheet, StatusBar } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, StatusBar, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import * as SplashScreen from 'expo-splash-screen';
 import {
@@ -41,11 +41,15 @@ export default function App() {
       
       console.log('============================================================');
       console.log('⚡ STARTUP BACKEND HEALTH CHECK DIAGNOSTICS');
-      console.log(`• Environment:         ${networkInfo.env.toUpperCase()}`);
-      console.log(`• Backend Host:        ${networkInfo.host}`);
-      console.log(`• Backend Port:        ${networkInfo.port}`);
+      console.log(`• Current Device:      ${networkInfo.deviceName}`);
+      console.log(`• Platform:            ${Platform.OS}`);
+      console.log(`• isDevice:            ${networkInfo.isDevice}`);
+      console.log(`• isEmulator:          ${networkInfo.isEmulator}`);
+      console.log(`• Detected Host:       ${networkInfo.host}`);
       console.log(`• Selected Base URL:   ${networkInfo.baseUrl}`);
       console.log(`• Connection Attempt:  ${hostUrl}/health`);
+      console.log(`• Configuration Used:  mobile/src/config/apiConfig.js`);
+      console.log(`• Axios Instance:      mobile/src/services/api.js (axios.create)`);
       if (result.ok) {
         console.log(`• Status:              Connected ✅`);
         console.log(`• Response Time:       ${result.responseTime}ms`);
