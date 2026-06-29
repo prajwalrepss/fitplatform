@@ -27,6 +27,23 @@ router.post("/register", async (req, res, next) => {
         const user = new User({ username, email, password, age, height, weight, goal, experienceLevel });
         await user.save();
 
+        const TrainingProfile = require("../models/TrainingProfile");
+        const existingProfile = await TrainingProfile.findOne({ userId: user._id });
+        if (!existingProfile) {
+            await TrainingProfile.create({
+                userId: user._id,
+                currentWeek: 1,
+                currentDay: 1,
+                currentCycleIndex: 0,
+                dayStreak: 0,
+                weeklyCompletion: 0,
+                completedWorkouts: 0,
+                recoveryStatus: "Ready",
+                consecutiveHeavyDays: 0,
+                trainingHistory: [],
+            });
+        }
+
         const token = jwt.sign(
             { userId: user._id, username: user.username, email: user.email },
             SECRET,

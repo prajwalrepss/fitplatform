@@ -1,7 +1,9 @@
-﻿const express = require("express");
+const express = require("express");
 const router = express.Router();
 const TrainingProfile = require("../models/TrainingProfile");
 const { buildUpdateAfterWorkout, computeWeeklyCompletion, generateInsight } = require("../utils/progressEngine");
+const { verifyToken } = require("../middleware/auth");
+const { SECRET } = require("../config/jwt");
 const jwt = require("jsonwebtoken");
 
 // ---------------------------------------------------------------------------
@@ -11,26 +13,14 @@ function optionalAuth(req, res, next) {
   const header = req.headers.authorization;
   if (header && header.startsWith("Bearer ")) {
     try {
-      const decoded = jwt.verify(header.slice(7), process.env.JWT_SECRET || "vitalis_secret");
-      req.userId = decoded.id || decoded.userId || decoded._id;
+      const decoded = jwt.verify(header.slice(7), SECRET);
+      req.userId = decoded.userId;
     } catch (_) {}
   }
   next();
 }
 
-function requireAuth(req, res, next) {
-  const header = req.headers.authorization;
-  if (!header || !header.startsWith("Bearer ")) {
-    return res.status(401).json({ error: "Authentication required" });
-  }
-  try {
-    const decoded = jwt.verify(header.slice(7), process.env.JWT_SECRET || "vitalis_secret");
-    req.userId = decoded.id || decoded.userId || decoded._id;
-    next();
-  } catch (_) {
-    return res.status(401).json({ error: "Invalid token" });
-  }
-}
+const requireAuth = verifyToken;
 
 // ---------------------------------------------------------------------------
 // Helper: get or auto-create profile for a user

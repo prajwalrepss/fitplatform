@@ -1,4 +1,4 @@
-﻿/**
+/**
  * WorkoutPlanScreen - Vitalis Workout Plan Overview
  * Implements the Stitch design with live backend integration and manual override.
  */
@@ -8,6 +8,7 @@ import {
   StatusBar, Dimensions, Platform, ActivityIndicator, Alert,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Typography } from '../theme';
 import TrainingBodyEngine from '../components/BodyEngine';
 import WorkoutPickerSheet from '../components/WorkoutPickerSheet';
@@ -178,11 +179,11 @@ export default function WorkoutPlanScreen({ navigation, route }) {
       console.log('[WorkoutPlanScreen] Error loading training profile:', err.message);
       // Setup default mock values locally in case backend is offline
       setProfile({
-        currentWeek: 3,
+        currentWeek: 1,
         currentDay: 1,
-        dayStreak: 14,
-        weeklyCompletion: 82,
-        completedWorkouts: 24,
+        dayStreak: 0,
+        weeklyCompletion: 0,
+        completedWorkouts: 0,
         recoveryStatus: 'Ready',
         selectedSplit: route?.params?.split ?? DEFAULT_SPLIT,
         trainingHistory: [],
@@ -370,14 +371,28 @@ export default function WorkoutPlanScreen({ navigation, route }) {
           {/* Action buttons row */}
           <View style={styles.btnRow}>
             <Pressable
-              style={({ pressed }) => [styles.startBtn, pressed && styles.startBtnPressed, isRestDay && styles.startBtnRest]}
+              style={({ pressed }) => [
+                styles.startBtn,
+                pressed && styles.startBtnPressed,
+                isRestDay && styles.startBtnRest
+              ]}
               onPress={handleStartWorkout}
               disabled={completing}
             >
+              {!isRestDay && (
+                <LinearGradient
+                  colors={['#6C63FF', '#564CE6']}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  style={StyleSheet.absoluteFillObject}
+                />
+              )}
               {completing ? (
                 <ActivityIndicator size="small" color={TEXT_WHITE} />
               ) : (
-                <Text style={styles.startBtnText}>{isRestDay ? 'VIEW RECOVERY' : 'START WORKOUT'}</Text>
+                <Text style={styles.startBtnText}>
+                  {isRestDay ? 'VIEW RECOVERY' : 'START WORKOUT'}
+                </Text>
               )}
             </Pressable>
 
@@ -519,32 +534,44 @@ const styles = StyleSheet.create({
   heroMetaItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   heroMetaText: { ...Typography.labelCaps, color: TEXT_SEC, letterSpacing: 1.5 },
   btnRow: {
-    flexDirection: 'row', gap: 10, marginTop: 4,
+    flexDirection: 'row', gap: 12, marginTop: 4,
   },
   startBtn: {
     flex: 1,
-    backgroundColor: PRIMARY, borderRadius: 9999, paddingVertical: 14, alignItems: 'center',
-    shadowColor: PRIMARY, shadowOpacity: 0.4, shadowRadius: 16,
-    shadowOffset: { width: 0, height: 4 }, elevation: 6, zIndex: 2,
+    height: 50,
+    borderRadius: 9999,
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: PRIMARY,
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
+    zIndex: 2,
   },
   startBtnRest: {
     backgroundColor: '#1E293B',
     shadowOpacity: 0,
   },
-  startBtnPressed: { opacity: 0.9, shadowOpacity: 0.2 },
+  startBtnPressed: { opacity: 0.9 },
   startBtnText: {
-    fontFamily: 'HankenGrotesk_700Bold', fontSize: 13, letterSpacing: 1.5,
+    fontFamily: 'HankenGrotesk_600SemiBold', fontSize: 15, letterSpacing: 1.2,
     color: TEXT_WHITE, textTransform: 'uppercase',
   },
   changeBtn: {
     flex: 1,
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
-    borderRadius: 9999, paddingVertical: 14, alignItems: 'center',
+    height: 50,
+    borderWidth: 1.5,
+    borderColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 9999,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'rgba(255,255,255,0.02)',
   },
   changeBtnPressed: { backgroundColor: 'rgba(255,255,255,0.06)' },
   changeBtnText: {
-    fontFamily: 'HankenGrotesk_700Bold', fontSize: 13, letterSpacing: 1.5,
+    fontFamily: 'HankenGrotesk_600SemiBold', fontSize: 15, letterSpacing: 1.2,
     color: TEXT_SEC, textTransform: 'uppercase',
   },
   bodyEngineSection: {
