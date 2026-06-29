@@ -1,38 +1,6 @@
 import axios from 'axios';
-import { NativeModules, Platform } from 'react-native';
 import { getToken, removeToken } from '../utils/storage';
-
-// ============================================================================
-// API BASE URL
-// ============================================================================
-// Automatically detects the dev machine's local IP address in development.
-// Falls back to standard emulator/localhost mapping.
-// ============================================================================
-const getBaseUrl = () => {
-  if (__DEV__) {
-    try {
-      const scriptURL = NativeModules.SourceCode?.scriptURL;
-      if (scriptURL) {
-        const match = scriptURL.match(/^https?:\/\/([^:/]+)(:\d+)?/);
-        if (match && match[1]) {
-          const ip = match[1];
-          console.log(`[API] Detected dev server IP: ${ip}`);
-          return `http://${ip}:5000/api`;
-        }
-      }
-    } catch (_) {}
-
-    // Fallbacks if scriptURL detection fails
-    if (Platform.OS === 'android') {
-      return 'http://10.0.2.2:5000/api';
-    }
-  }
-
-  // Default fallback (matches active development machine network IP)
-  return 'http://192.168.1.10:5000/api';
-};
-
-export const BASE_URL = getBaseUrl();
+import { BASE_URL, ENV, HOST, PORT } from '../config/apiConfig';
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -83,12 +51,16 @@ api.interceptors.response.use(
     console.error(`• Method:              ${method}`);
     console.error(`• Request URL:         ${requestUrl}`);
     console.error(`• Base URL:            ${baseURL}`);
+    console.error(`• Environment:         ${ENV.toUpperCase()}`);
+    console.error(`• Selected Host:       ${HOST}`);
+    console.error(`• Selected Port:       ${PORT}`);
     console.error(`• Status Code:         ${statusCode}`);
     console.error(`• Axios Error Code:    ${errorCode}`);
     console.error(`• Response Body:       ${responseBody}`);
     console.error(`• Request Timeout:     ${timeout}ms`);
     console.error(`• Authentication:      ${authState}`);
     console.error(`• Left Device:         ${requestLeftDevice}`);
+    console.error(`• Backend Responded:   ${response ? 'Yes' : 'No'}`);
     console.error('============================================================');
 
     if (response?.status === 401) {
@@ -111,12 +83,15 @@ export const authAPI = {
 // Single Startup API Health Check
 // ---------------------------------------------------------------------------
 export const checkHealth = async () => {
+  const startTime = Date.now();
   try {
     const healthUrl = BASE_URL.replace('/api', '/health');
     const res = await axios.get(healthUrl, { timeout: 3000 });
-    return { ok: true, status: res.data?.status || 'ok' };
+    const responseTime = Date.now() - startTime;
+    return { ok: true, status: res.data?.status || 'ok', responseTime };
   } catch (err) {
-    return { ok: false, error: err };
+    const responseTime = Date.now() - startTime;
+    return { ok: false, error: err, responseTime };
   }
 };
 

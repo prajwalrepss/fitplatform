@@ -13,6 +13,7 @@ import {
 import RootNavigator from './src/navigation/RootNavigator';
 import { getToken } from './src/utils/storage';
 import { authAPI, checkHealth, BASE_URL } from './src/services/api';
+import { ENV, HOST, PORT } from './src/config/apiConfig';
 import Screens from './src/constants/screens';
 import { Colors } from './src/theme';
 import { DEV_BYPASS_AUTH } from './src/config/dev';
@@ -35,13 +36,25 @@ export default function App() {
   useEffect(() => {
     async function runHealthCheck() {
       const result = await checkHealth();
+      const hostUrl = BASE_URL.replace('/api', '');
+      
+      console.log('============================================================');
+      console.log('⚡ STARTUP BACKEND HEALTH CHECK DIAGNOSTICS');
+      console.log(`• Environment:         ${ENV.toUpperCase()}`);
+      console.log(`• Backend Host:        ${HOST}`);
+      console.log(`• Backend Port:        ${PORT}`);
+      console.log(`• Selected Base URL:   ${BASE_URL}`);
+      console.log(`• Connection Attempt:  ${hostUrl}/health`);
       if (result.ok) {
-        console.log(`Backend: Connected (${BASE_URL.replace('/api', '')})`);
+        console.log(`• Status:              Connected ✅`);
+        console.log(`• Response Time:       ${result.responseTime}ms`);
       } else {
-        const reason = result.error?.code === 'ECONNABORTED' ? 'Timeout' : result.error?.message || 'Unknown';
-        console.log(`Backend: Unreachable`);
-        console.log(`Reason: ${reason}`);
+        const reason = result.error?.code === 'ECONNABORTED' ? 'Timeout (No Response)' : result.error?.message || 'Unknown Network Error';
+        console.log(`• Status:              Unreachable ❌`);
+        console.log(`• Response Time:       ${result.responseTime}ms`);
+        console.log(`• Failure Reason:      ${reason}`);
       }
+      console.log('============================================================');
     }
 
     async function checkAuth() {
