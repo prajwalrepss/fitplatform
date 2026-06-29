@@ -5,8 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import Animated, { FadeInDown } from 'react-native-reanimated';
-import { colors, typography, spacing, radius } from '../../constants/theme';
-import { mockMessages } from '../../data/exercises';
+import { colors, typography, spacing, radius } from '../../../constants/theme';
+import { mockMessages } from '../../../data/exercises';
 
 interface Message {
   id: string;

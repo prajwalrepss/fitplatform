@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import Animated, {
   FadeInDown,
   useSharedValue,
@@ -19,6 +19,11 @@ const FORM_BARS = [78, 82, 85, 90, 88, 92, 87, 89];
 export default function SessionSummaryScreen() {
   const insets = useSafeAreaInsets();
   const checkScale = useSharedValue(0);
+  const { reps, duration, form } = useLocalSearchParams<{ reps?: string; duration?: string; form?: string }>();
+
+  const finalReps = reps || "48";
+  const finalDuration = duration || "12:34";
+  const finalForm = form || "89%";
 
   useEffect(() => {
     checkScale.value = withSpring(1, { damping: 12, stiffness: 200 });
@@ -47,21 +52,21 @@ export default function SessionSummaryScreen() {
       <Animated.View entering={FadeInDown.delay(200).duration(400)} style={styles.statsGrid}>
         <StatCard
           label="Reps"
-          value="48"
+          value={finalReps}
           icon="repeat-outline"
           compact
           style={styles.statHalf}
         />
         <StatCard
           label="Duration"
-          value="12:34"
+          value={finalDuration}
           icon="time-outline"
           compact
           style={styles.statHalf}
         />
         <StatCard
           label="Avg Form"
-          value="89%"
+          value={finalForm}
           icon="trending-up-outline"
           compact
           style={styles.statHalf}

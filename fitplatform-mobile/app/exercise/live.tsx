@@ -1,67 +1,140 @@
-import React from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
+﻿import React, { useState, useEffect, useMemo } from 'react';
+import { StyleSheet, View, Text, Dimensions, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import Svg, { Line } from 'react-native-svg';
 import Animated, { FadeIn } from 'react-native-reanimated';
-import { colors, typography, spacing, radius } from '../../constants/theme';
+import { colors, typography, spacing } from '../../constants/theme';
 import PoseOverlay from '../../components/tracking/PoseOverlay';
 import TrackingHUD from '../../components/tracking/TrackingHUD';
+import CameraView from '../../components/tracking/CameraView';
+import { usePoseDetection } from '../../hooks/usePoseDetection';
+import { useExerciseTracking } from '../../hooks/useExerciseTracking';
+import { exercises } from '../../data/exercises';
+import { EXERCISES } from '../../constants/exerciseThresholds';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-function ScanGrid() {
-  const gridSpacing = 40;
-  const lines = [];
-  for (let x = 0; x <= SCREEN_WIDTH; x += gridSpacing) {
-    lines.push(
-      <Line
-        key={`v-${x}`}
-        x1={x} y1={0}
-        x2={x} y2={SCREEN_HEIGHT}
-        stroke="white"
-        strokeWidth={0.5}
-        strokeOpacity={0.05}
-      />
-    );
-  }
-  for (let y = 0; y <= SCREEN_HEIGHT; y += gridSpacing) {
-    lines.push(
-      <Line
-        key={`h-${y}`}
-        x1={0} y1={y}
-        x2={SCREEN_WIDTH} y2={y}
-        stroke="white"
-        strokeWidth={0.5}
-        strokeOpacity={0.05}
-      />
-    );
-  }
-  return (
-    <Svg width={SCREEN_WIDTH} height={SCREEN_HEIGHT} style={StyleSheet.absoluteFill}>
-      {lines}
-    </Svg>
-  );
+function getThresholdId(name: string): string {
+  const norm = name.toLowerCase();
+  if (norm.includes('bicep')) return 'bicep-curls';
+  if (norm.includes('squat')) return 'squats';
+  if (norm.includes('shoulder')) return 'shoulder-press';
+  if (norm.includes('lunge')) return 'lunges';
+  if (norm.includes('lateral')) return 'lateral-raises';
+  if (norm.includes('knee')) return 'knee-extensions';
+  return 'bicep-curls';
 }
 
 export default function LiveTrackingScreen() {
+  const { id } = useLocalSearchParams<{ id?: string }>();
+  
+  // Find current exercise based on URL parameters or default to Bicep Curls
+  const currentExercise = useMemo(() => {
+    const exerciseId = Number(id) || 1;
+    return exercises.find((e) => e.id === exerciseId) || exercises[0];
+  }, [id]);
+
+  // Find VIZO tracking configuration
+  const trackingConfig = useMemo(() => {
+    const thresholdId = getThresholdId(currentExercise.name);
+    return EXERCISES.find((e) => e.id === thresholdId) || EXERCISES[0];
+  }, [currentExercise]);
+
+  const [trackingActive, setTrackingActive] = useState(true);
+  const [elapsed, setElapsed] = useState(0);
+  const [bpm, setBpm] = useState(138);
+
+  // 1. Initialize Pose Detection
+  const landmarks = usePoseDetection({
+    active: trackingActive,
+    exerciseId: trackingConfig.id,
+  });
+
+  // 2. Initialize Exercise Tracking Engine
+  const {
+    currentSet,
+    currentRep,
+    formScore,
+    feedback,
+    compensationAlert,
+    isSessionComplete,
+    setHistory,
+    resetSession,
+  } = useExerciseTracking({
+    exercise: trackingConfig,
+    targetSets: trackingConfig.targetSets,
+    targetReps: trackingConfig.targetReps,
+    landmarks,
+  });
+
+  // Timer logic
+  useEffect(() => {
+    if (!trackingActive || isSessionComplete) return;
+    const interval = setInterval(() => {
+      setElapsed((prev) => prev + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [trackingActive, isSessionComplete]);
+
+  // Heart rate mock fluctuation
+  useEffect(() => {
+    if (!trackingActive || isSessionComplete) return;
+    const interval = setInterval(() => {
+      setBpm(135 + Math.floor(Math.random() * 10));
+    }, 1500);
+    return () => clearInterval(interval);
+  }, [trackingActive, isSessionComplete]);
+
+  // Auto-transition to summary screen when session completes
+  useEffect(() => {
+    if (isSessionComplete) {
+      handleCompleteSession();
+    }
+  }, [isSessionComplete]);
+
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const s = (seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+  };
+
+  const handlePauseToggle = () => {
+    setTrackingActive((prev) => !prev);
+  };
+
+  const handleCompleteSession = () => {
+    // Navigate to summary screen passing real computed stats
+    const totalReps = setHistory.length * trackingConfig.targetReps + currentRep;
+    const avgForm = setHistory.length > 0
+      ? Math.round(setHistory.reduce((sum, item) => sum + item.avgScore, 0) / setHistory.length)
+      : formScore;
+
+    router.push({
+      pathname: '/exercise/summary',
+      params: {
+        reps: String(totalReps),
+        duration: formatTime(elapsed),
+        form: `${avgForm}%`,
+      },
+    });
+  };
+
   return (
     <View style={styles.screen}>
       <StatusBar hidden />
 
-      {/* Camera placeholder */}
-      <View style={styles.cameraPlaceholder}>
-        <View style={styles.cameraDark} />
-      </View>
+      {/* Real-time Camera View & Grid Overlay */}
+      <CameraView
+        status={trackingActive ? 'active' : 'initializing'}
+      />
 
-      {/* Scan grid overlay */}
-      <ScanGrid />
-
-      {/* Pose Overlay */}
+      {/* Dynamic Pose Overlay driven by computed landmarks */}
       <Animated.View entering={FadeIn.delay(300).duration(600)} style={styles.poseContainer}>
         <PoseOverlay
-          width={SCREEN_WIDTH * 0.6}
-          height={SCREEN_HEIGHT * 0.45}
+          landmarks={landmarks}
+          width={SCREEN_WIDTH * 0.75}
+          height={SCREEN_HEIGHT * 0.5}
         />
       </Animated.View>
 
@@ -69,11 +142,14 @@ export default function LiveTrackingScreen() {
       <Animated.View entering={FadeIn.delay(200).duration(400)} style={styles.topOverlay}>
         <View style={styles.topLeft}>
           <Text style={styles.topLabel}>CURRENT EXERCISE</Text>
-          <Text style={styles.topExercise}>Bicep Curl</Text>
+          <Text style={styles.topExercise}>{currentExercise.name}</Text>
+          <Text style={styles.topSetInfo}>
+            SET {currentSet}/{trackingConfig.targetSets} • REP {currentRep}/{trackingConfig.targetReps}
+          </Text>
         </View>
         <View style={styles.topRight}>
           <Text style={styles.topLabel}>TIME ELAPSED</Text>
-          <Text style={styles.topTime}>02:34</Text>
+          <Text style={styles.topTime}>{formatTime(elapsed)}</Text>
         </View>
       </Animated.View>
 
@@ -84,20 +160,33 @@ export default function LiveTrackingScreen() {
           {[0.4, 0.7, 0.5, 0.9, 0.6].map((h, i) => (
             <View
               key={i}
-              style={[styles.miniBar, { height: 24 * h, backgroundColor: colors.primary }]}
+              style={[
+                styles.miniBar,
+                {
+                  height: 24 * h * (trackingActive ? 1 : 0.4),
+                  backgroundColor: trackingActive ? colors.primary : colors.surfaceContainerHighest,
+                },
+              ]}
             />
           ))}
         </View>
-        <Text style={styles.sideBPM}>142 BPM</Text>
+        <Text style={styles.sideBPM}>{trackingActive ? `${bpm} BPM` : '-- BPM'}</Text>
       </View>
 
-      {/* Bottom HUD */}
+      {/* On-screen Compensation Alert Warning overlay */}
+      {compensationAlert && (
+        <View style={styles.alertBanner}>
+          <Text style={styles.alertBannerText}>⚠️ {compensationAlert.toUpperCase()}</Text>
+        </View>
+      )}
+
+      {/* Bottom HUD - Connected to Live Tracker State */}
       <TrackingHUD
-        reps={16}
-        formScore={87}
-        feedback="Great form! Keep your elbows tucked."
-        onPause={() => {}}
-        onEnd={() => router.push('/exercise/summary')}
+        reps={currentRep}
+        formScore={formScore}
+        feedback={trackingActive ? feedback : 'Tracking is currently paused.'}
+        onPause={handlePauseToggle}
+        onEnd={handleCompleteSession}
       />
     </View>
   );
@@ -108,20 +197,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.surfaceLowest,
   },
-  cameraPlaceholder: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  cameraDark: {
-    flex: 1,
-    backgroundColor: colors.surfaceLowest,
-    opacity: 0.6,
-  },
   poseContainer: {
     position: 'absolute',
-    top: '15%',
-    left: '20%',
-    right: '20%',
+    top: '18%',
+    left: '12%',
+    right: '12%',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   topOverlay: {
     position: 'absolute',
@@ -141,9 +223,14 @@ const styles = StyleSheet.create({
     color: colors.onSurfaceVariant,
   },
   topExercise: {
-    ...typography.displayLG,
+    ...typography.displayMD,
     color: colors.onSurface,
-    fontSize: 32,
+    fontSize: 28,
+  },
+  topSetInfo: {
+    ...typography.labelMD,
+    color: colors.primary,
+    marginTop: 2,
   },
   topRight: {
     alignItems: 'flex-end',
@@ -181,5 +268,24 @@ const styles = StyleSheet.create({
     ...typography.labelSM,
     color: colors.primary,
     fontSize: 9,
+  },
+  alertBanner: {
+    position: 'absolute',
+    bottom: '38%',
+    left: '10%',
+    right: '10%',
+    backgroundColor: 'rgba(255, 68, 68, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 68, 68, 0.4)',
+    borderRadius: 9999,
+    paddingVertical: spacing.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  alertBannerText: {
+    ...typography.labelMD,
+    color: colors.destructive,
+    fontWeight: '700',
+    letterSpacing: 1.0,
   },
 });
