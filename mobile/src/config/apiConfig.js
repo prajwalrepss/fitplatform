@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import { NativeModules, Platform } from 'react-native';
 
 /**
@@ -17,7 +18,7 @@ let resolvedIp = null;
 
 /**
  * Dynamically resolves the base URL at runtime.
- * Evaluates NativeModules.SourceCode.scriptURL lazily.
+ * Evaluates hostUri, debuggerHost, __bundleURL and scriptURL lazily.
  */
 export const getBaseUrl = () => {
   if (ENV === 'production') {
@@ -28,28 +29,51 @@ export const getBaseUrl = () => {
     return `http://${resolvedIp}:${PORT}/api`;
   }
 
-  try {
-    const scriptURL = NativeModules.SourceCode?.scriptURL;
-    // CRITICAL: Log raw scriptURL so we can diagnose why parsing might fail
-    console.log('[apiConfig] Raw NativeModules.SourceCode.scriptURL:', scriptURL);
-    console.log('[apiConfig] NativeModules.SourceCode keys:', Object.keys(NativeModules.SourceCode || {}));
-
-    if (scriptURL) {
-      // Regex matches http://, https://, exp:// protocols and extracts host IP
-      const match = scriptURL.match(/^(?:https?|exp):\/\/([^:/]+)/i);
-      if (match && match[1]) {
-        const ip = match[1];
-        // Only memoize if it's a valid local IP address and not localhost / loopback
-        if (ip !== 'localhost' && ip !== '127.0.0.1' && ip !== '10.0.2.2') {
-          resolvedIp = ip;
-          console.log(`[apiConfig] Successfully resolved LAN IP: ${ip}`);
-          return `http://${ip}:${PORT}/api`;
-        }
+  // Helper to extract IP from string and memoize it
+  const parseIp = (input, sourceName) => {
+    if (!input) return null;
+    
+    // Log the input check for debugging logs
+    console.log(`[apiConfig] Checking source: ${sourceName} = "${input}"`);
+    
+    const match = input.match(/^(?:[a-z0-9\-.]+:\/\/)?([^:/]+)/i);
+    if (match && match[1]) {
+      const ip = match[1];
+      // Only memoize if it's a valid local IP address and not localhost / loopback
+      if (ip !== 'localhost' && ip !== '127.0.0.1' && ip !== '10.0.2.2') {
+        resolvedIp = ip;
+        console.log(`[apiConfig] Successfully resolved LAN IP via ${sourceName}: ${ip}`);
+        return ip;
       }
     }
-  } catch (err) {
-    console.warn('[apiConfig] Error parsing scriptURL:', err);
+    return null;
+  };
+
+  // 1. Check expoConfig hostUri (most common in modern Expo)
+  const hostUri = Constants.expoConfig?.hostUri;
+  if (parseIp(hostUri, 'Constants.expoConfig.hostUri')) {
+    return `http://${resolvedIp}:${PORT}/api`;
   }
+
+  // 2. Check manifest2 extra expoGo debuggerHost
+  const debuggerHost = Constants.manifest2?.extra?.expoGo?.debuggerHost;
+  if (parseIp(debuggerHost, 'Constants.manifest2.extra.expoGo.debuggerHost')) {
+    return `http://${resolvedIp}:${PORT}/api`;
+  }
+
+  // 3. Check global.__bundleURL
+  const bundleURL = global.__bundleURL;
+  if (parseIp(bundleURL, 'global.__bundleURL')) {
+    return `http://${resolvedIp}:${PORT}/api`;
+  }
+
+  // 4. Check NativeModules.SourceCode.scriptURL
+  try {
+    const scriptURL = NativeModules.SourceCode?.scriptURL;
+    if (parseIp(scriptURL, 'NativeModules.SourceCode.scriptURL')) {
+      return `http://${resolvedIp}:${PORT}/api`;
+    }
+  } catch (_) {}
 
   // Fallbacks if scriptURL parser fails or is not yet initialized
   if (Platform.OS === 'android') {
