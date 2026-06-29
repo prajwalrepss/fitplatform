@@ -12,7 +12,7 @@ import {
 
 import RootNavigator from './src/navigation/RootNavigator';
 import { getToken } from './src/utils/storage';
-import { authAPI } from './src/services/api';
+import { authAPI, checkHealth, BASE_URL } from './src/services/api';
 import Screens from './src/constants/screens';
 import { Colors } from './src/theme';
 import { DEV_BYPASS_AUTH } from './src/config/dev';
@@ -33,7 +33,21 @@ export default function App() {
   });
 
   useEffect(() => {
+    async function runHealthCheck() {
+      const result = await checkHealth();
+      if (result.ok) {
+        console.log(`Backend: Connected (${BASE_URL.replace('/api', '')})`);
+      } else {
+        const reason = result.error?.code === 'ECONNABORTED' ? 'Timeout' : result.error?.message || 'Unknown';
+        console.log(`Backend: Unreachable`);
+        console.log(`Reason: ${reason}`);
+      }
+    }
+
     async function checkAuth() {
+      // Run startup API health check
+      runHealthCheck();
+
       // DEVELOPMENT AUTH BYPASS
       if (DEV_BYPASS_AUTH) {
         setInitialRoute(Screens.HOME);
