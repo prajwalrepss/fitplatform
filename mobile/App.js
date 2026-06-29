@@ -12,8 +12,8 @@ import {
 
 import RootNavigator from './src/navigation/RootNavigator';
 import { getToken } from './src/utils/storage';
-import { authAPI, checkHealth, BASE_URL } from './src/services/api';
-import { ENV, HOST, PORT } from './src/config/apiConfig';
+import { authAPI, checkHealth } from './src/services/api';
+import { getActiveNetworkInfo } from './src/config/apiConfig';
 import Screens from './src/constants/screens';
 import { Colors } from './src/theme';
 import { DEV_BYPASS_AUTH } from './src/config/dev';
@@ -36,14 +36,15 @@ export default function App() {
   useEffect(() => {
     async function runHealthCheck() {
       const result = await checkHealth();
-      const hostUrl = BASE_URL.replace('/api', '');
+      const networkInfo = getActiveNetworkInfo();
+      const hostUrl = networkInfo.baseUrl.replace('/api', '');
       
       console.log('============================================================');
       console.log('⚡ STARTUP BACKEND HEALTH CHECK DIAGNOSTICS');
-      console.log(`• Environment:         ${ENV.toUpperCase()}`);
-      console.log(`• Backend Host:        ${HOST}`);
-      console.log(`• Backend Port:        ${PORT}`);
-      console.log(`• Selected Base URL:   ${BASE_URL}`);
+      console.log(`• Environment:         ${networkInfo.env.toUpperCase()}`);
+      console.log(`• Backend Host:        ${networkInfo.host}`);
+      console.log(`• Backend Port:        ${networkInfo.port}`);
+      console.log(`• Selected Base URL:   ${networkInfo.baseUrl}`);
       console.log(`• Connection Attempt:  ${hostUrl}/health`);
       if (result.ok) {
         console.log(`• Status:              Connected ✅`);

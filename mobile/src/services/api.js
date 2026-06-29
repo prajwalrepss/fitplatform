@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { getToken, removeToken } from '../utils/storage';
-import { BASE_URL, ENV, HOST, PORT } from '../config/apiConfig';
+import { getBaseUrl, getActiveNetworkInfo } from '../config/apiConfig';
 
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: getBaseUrl(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -15,6 +15,9 @@ const api = axios.create({
 // ---------------------------------------------------------------------------
 api.interceptors.request.use(
   async (config) => {
+    // Dynamically resolve base URL on every request to avoid early native module race conditions
+    config.baseURL = getBaseUrl();
+
     const token = await getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -45,15 +48,18 @@ api.interceptors.response.use(
     const authState = requestConfig?.headers?.Authorization ? 'Attached (JWT)' : 'None';
     const requestLeftDevice = !!request ? 'Yes (Sent but no response or connection failed)' : 'No (Setup error or rejected before leaving)';
 
+    // Retrieve active configuration variables dynamically on failure
+    const networkInfo = getActiveNetworkInfo();
+
     console.error('============================================================');
     console.error('❌ API REQUEST ERROR DIAGNOSTICS');
     console.error(`• Endpoint:            ${endpoint}`);
     console.error(`• Method:              ${method}`);
     console.error(`• Request URL:         ${requestUrl}`);
     console.error(`• Base URL:            ${baseURL}`);
-    console.error(`• Environment:         ${ENV.toUpperCase()}`);
-    console.error(`• Selected Host:       ${HOST}`);
-    console.error(`• Selected Port:       ${PORT}`);
+    console.error(`• Environment:         ${networkInfo.env.toUpperCase()}`);
+    console.error(`• Selected Host:       ${networkInfo.host}`);
+    console.error(`• Selected Port:       ${networkInfo.port}`);
     console.error(`• Status Code:         ${statusCode}`);
     console.error(`• Axios Error Code:    ${errorCode}`);
     console.error(`• Response Body:       ${responseBody}`);
@@ -85,7 +91,8 @@ export const authAPI = {
 export const checkHealth = async () => {
   const startTime = Date.now();
   try {
-    const healthUrl = BASE_URL.replace('/api', '/health');
+    const activeBaseUrl = getBaseUrl();
+    const healthUrl = activeBaseUrl.replace('/api', '/health');
     const res = await axios.get(healthUrl, { timeout: 3000 });
     const responseTime = Date.now() - startTime;
     return { ok: true, status: res.data?.status || 'ok', responseTime };
