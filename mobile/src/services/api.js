@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken, removeToken } from '../utils/storage';
+import { clearAll, getToken } from '../utils/storage';
 import { getBaseUrl, getActiveNetworkInfo } from '../config/apiConfig';
 
 const api = axios.create({
@@ -20,6 +20,7 @@ api.interceptors.request.use(
 
     const token = await getToken();
     if (token) {
+      config.headers = config.headers ?? {};
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -46,7 +47,11 @@ api.interceptors.response.use(
     const responseBody = response?.data ? JSON.stringify(response.data) : 'N/A';
     const timeout = requestConfig?.timeout || 'N/A';
     const authState = requestConfig?.headers?.Authorization ? 'Attached (JWT)' : 'None';
-    const requestLeftDevice = !!request ? 'Yes (Sent but no response or connection failed)' : 'No (Setup error or rejected before leaving)';
+    const requestLeftDevice = response
+      ? 'Yes (backend responded)'
+      : request
+        ? 'Yes (no response received)'
+        : 'No (setup error before send)';
 
     // Retrieve active configuration variables dynamically on failure
     const networkInfo = getActiveNetworkInfo();
@@ -70,7 +75,7 @@ api.interceptors.response.use(
     console.error('============================================================');
 
     if (response?.status === 401) {
-      await removeToken();
+      await clearAll();
     }
     return Promise.reject(error);
   }

@@ -1,28 +1,48 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { DEV_BYPASS_AUTH, MOCK_USER, MOCK_TOKEN } from '../config/dev';
 
 const TOKEN_KEY = '@fitplatform_token';
 const USER_KEY = '@fitplatform_user';
+
+const normalizeToken = (token) => {
+  if (typeof token !== 'string') {
+    return null;
+  }
+
+  const normalized = token.replace(/^Bearer\s+/i, '').trim();
+  return normalized.length > 0 ? normalized : null;
+};
 
 // ---------------------------------------------------------------------------
 // Token
 // ---------------------------------------------------------------------------
 export const saveToken = async (token) => {
   try {
-    await AsyncStorage.setItem(TOKEN_KEY, token);
+    const normalized = normalizeToken(token);
+    if (!normalized) {
+      await AsyncStorage.removeItem(TOKEN_KEY);
+      return;
+    }
+
+    await AsyncStorage.setItem(TOKEN_KEY, normalized);
   } catch (error) {
     console.error('Error saving token:', error);
   }
 };
 
 export const getToken = async () => {
-  // DEVELOPMENT AUTH BYPASS
-  if (DEV_BYPASS_AUTH) {
-    return MOCK_TOKEN;
-  }
-
   try {
-    return await AsyncStorage.getItem(TOKEN_KEY);
+    const storedToken = await AsyncStorage.getItem(TOKEN_KEY);
+    const normalized = normalizeToken(storedToken);
+
+    if (storedToken && storedToken !== normalized) {
+      if (normalized) {
+        await AsyncStorage.setItem(TOKEN_KEY, normalized);
+      } else {
+        await AsyncStorage.removeItem(TOKEN_KEY);
+      }
+    }
+
+    return normalized;
   } catch (error) {
     console.error('Error getting token:', error);
     return null;
@@ -49,11 +69,6 @@ export const saveUser = async (user) => {
 };
 
 export const getUser = async () => {
-  // DEVELOPMENT AUTH BYPASS
-  if (DEV_BYPASS_AUTH) {
-    return MOCK_USER;
-  }
-
   try {
     const json = await AsyncStorage.getItem(USER_KEY);
     return json ? JSON.parse(json) : null;

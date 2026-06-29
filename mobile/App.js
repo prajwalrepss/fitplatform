@@ -11,12 +11,11 @@ import {
 } from '@expo-google-fonts/hanken-grotesk';
 
 import RootNavigator from './src/navigation/RootNavigator';
-import { getToken } from './src/utils/storage';
+import { clearAll, getToken } from './src/utils/storage';
 import { authAPI, checkHealth } from './src/services/api';
 import { getActiveNetworkInfo } from './src/config/apiConfig';
 import Screens from './src/constants/screens';
 import { Colors } from './src/theme';
-import { DEV_BYPASS_AUTH } from './src/config/dev';
 
 // Prevent the splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -66,13 +65,6 @@ export default function App() {
       // Run startup API health check
       runHealthCheck();
 
-      // DEVELOPMENT AUTH BYPASS
-      if (DEV_BYPASS_AUTH) {
-        setInitialRoute(Screens.HOME);
-        setAppReady(true);
-        return;
-      }
-
       try {
         const token = await getToken();
         if (token) {
@@ -80,11 +72,16 @@ export default function App() {
             await authAPI.getMe();
             setInitialRoute(Screens.HOME);
           } catch {
+            await clearAll();
             setInitialRoute(Screens.LOGIN);
           }
+        } else {
+          setInitialRoute(Screens.LOGIN);
         }
       } catch (error) {
         console.warn('Auth check error:', error);
+        await clearAll();
+        setInitialRoute(Screens.LOGIN);
       } finally {
         setAppReady(true);
       }

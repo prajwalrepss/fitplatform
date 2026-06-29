@@ -14,6 +14,7 @@ import TrainingBodyEngine from '../components/BodyEngine';
 import WorkoutPickerSheet from '../components/WorkoutPickerSheet';
 import trainingAPI from '../services/trainingService';
 import { getWorkoutInsight } from '../services/insightService';
+import Screens from '../constants/screens';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const BODY_ENGINE_HEIGHT = Math.round(SCREEN_HEIGHT * 0.40);
@@ -160,7 +161,6 @@ export default function WorkoutPlanScreen({ navigation, route }) {
   const [overrideTarget, setOverrideTarget] = useState(null);
   const [pickerVisible, setPickerVisible] = useState(false);
   const [aiInsight, setAiInsight] = useState('');
-  const [completing, setCompleting] = useState(false);
 
   // Load backend profile & data
   const loadData = async () => {
@@ -266,27 +266,12 @@ export default function WorkoutPlanScreen({ navigation, route }) {
       return;
     }
     
-    // Complete the workout via POST /training/complete
-    setCompleting(true);
-    try {
-      await trainingAPI.complete({
-        target: currentTarget,
-        musclesTrained: activeMuscles,
-        durationMin: 60,
-      });
-      Alert.alert(
-        'Workout Completed!',
-        `Nice job completing your ${currentTarget} session today! Progress updated.`,
-        [{ text: 'OK', onPress: () => loadData() }]
-      );
-      setOverrideTarget(null);
-    } catch (err) {
-      console.log('[WorkoutPlanScreen] Complete workout failed:', err.message);
-      Alert.alert('Error', 'Failed to save workout completion to the server.');
-    } finally {
-      setCompleting(false);
-    }
-  }, [currentTarget, activeMuscles]);
+    navigation.navigate(Screens.WORKOUT_BUILDER, {
+      target: currentTarget,
+      musclesTrained: activeMuscles,
+      split: activeSplit,
+    });
+  }, [activeMuscles, activeSplit, currentTarget, navigation]);
 
   const heroLabel = getLabelForTarget(currentTarget);
   const exerciseCount = WORKOUT_EXERCISE_COUNTS[currentTarget.toLowerCase().trim()] ?? 0;
@@ -377,7 +362,6 @@ export default function WorkoutPlanScreen({ navigation, route }) {
                 isRestDay && styles.startBtnRest
               ]}
               onPress={handleStartWorkout}
-              disabled={completing}
             >
               {!isRestDay && (
                 <LinearGradient
@@ -387,13 +371,9 @@ export default function WorkoutPlanScreen({ navigation, route }) {
                   style={StyleSheet.absoluteFillObject}
                 />
               )}
-              {completing ? (
-                <ActivityIndicator size="small" color={TEXT_WHITE} />
-              ) : (
-                <Text style={styles.startBtnText}>
-                  {isRestDay ? 'VIEW RECOVERY' : 'START WORKOUT'}
-                </Text>
-              )}
+              <Text style={styles.startBtnText}>
+                {isRestDay ? 'VIEW RECOVERY' : 'START WORKOUT'}
+              </Text>
             </Pressable>
 
             <Pressable
